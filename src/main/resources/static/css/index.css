@@ -1,0 +1,145 @@
+.nav {
+  /* margin-left: auto; */
+  margin: 20px 0 20px auto;
+}
+.nav__account {
+  display: flex;
+}
+.nav__account-car {
+  display: flex;
+  /* margin-right: 10px; */
+}
+.nav__account-login {
+  display: flex;
+}
+.nav__account-login .link {
+  color: #fff;
+}
+.nav__link {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.nav__link i {
+  font-size: 18px;
+  padding: 10px;
+  background-color: #fff;
+  /* color: #ed254e; */
+  border: 1px solid rgba(41, 41, 41, 0.116);
+  border-radius: 50%;
+}
+.nro-products {
+  position: absolute;
+  margin-left: 30px;
+  background-color: rgb(92, 92, 92);
+  color: #effffa;
+  height: 25px;
+  width: 23px;
+  text-align: center;
+  border-radius: 50%;
+}
+.itemside {
+  display: flex;
+  margin-top: 20px;
+}
+.itemside .aside {
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 55px;
+}
+.itemside .aside span {
+  padding: 15px;
+}
+.itemside .aside i {
+  color: #fff;
+  font-size: 20px;
+}
+.img-wrap {
+  text-align: center;
+}
+.card-product {
+  width: 100%;
+}
+.section-heading {
+  margin: 20px 0;
+}
+.col-md-3 {
+  margin-bottom: 20px;
+}
+.card-product-grid:hover {
+  box-shadow: 0 4px 15px rgb(153 153 153 / 30%);
+  transition: 0.3s;
+}
+.card figcaption {
+  padding: 15px;
+}
+.price-wrap {
+  margin-bottom: 10px;
+}
+.banner-principal {
+  height: calc(100vh - 206px);
+  margin-bottom: 20px;
+}
+a {
+  color: #011936;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.section-name {
+  margin: 25px 0;
+}
+.auspiciadores .col-6 {
+  display: flex;
+  align-items: center;
+}
+.item-logo a img {
+  width: 100%;
+}
+.section-footer {
+  color: #fff;
+}
+.section-footer a {
+  color: #fff;
+}
+.footer-top {
+  margin: 20px 0;
+}
+
+@media (max-width: 767px) {
+  .card-product {
+    width: 50%;
+  }
+}
+@media (max-width: 991px) {
+  .brand-wrap img {
+    margin: 5px 0 10px;
+  }
+  .nav {
+    margin: 10px 0 10px 20px;
+  }
+  .banner-principal {
+    height: calc(100vh - 307px);
+  }
+}
+
+.back-color-primary {
+  background-color: #011936;
+  padding: 10px 0;
+}
+.back-color-secondary {
+  background-color: #ed254e;
+}
+.back-color-third {
+  background-color: #effffa;
+}
+.color-primary {
+  color: #011936 !important;
+}
+.color-secondary {
+  color: #ed254e !important;
+}
+.color-third {
+  color: #effffa;
+}

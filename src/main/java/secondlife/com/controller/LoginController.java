@@ -15,4 +15,13 @@ public class LoginController {
 		return "terminos";
 	}
 
+	@GetMapping("/carrito")
+	public String carrito() {
+		return "carrito";
+	}
+	
+	@GetMapping("/productos")
+	public String productos() {
+		return "productos";
+	}
 }

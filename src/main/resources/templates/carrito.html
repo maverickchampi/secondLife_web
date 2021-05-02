@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Second Life</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+	<header class="section-header">
+
+		<nav class="navbar navbar-dark navbar-expand p-0 back-color-third">
+			<div class="container">
+				<ul class="navbar-nav d-none d-md-flex mr-auto">
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a href="#" class="nav-link color-primary"> Llamar: +51 987654321 </a></li>
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle color-primary" data-toggle="dropdown"> Español </a>
+						<!-- <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
+				<li><a class="dropdown-item" href="#"></a></li>
+		    </ul> -->
+					</li>
+				</ul> <!-- list-inline //  -->
+			</div> <!-- navbar-collapse .// -->
+			</div> <!-- container //  -->
+		</nav> <!-- header-top-light.// -->
+
+		<section class="header-main border-bottom back-color-primary">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-6">
+						<a href="index" class="brand-wrap">
+							<img class="logo" src="https://i.ibb.co/PrJZYFw/icon-project.png" width="100">
+						</a> <!-- brand-wrap.// -->
+					</div>
+					<div class="col-lg-6 col-12 col-sm-12">
+						<form action="#" class="search">
+							<div class="input-group w-100">
+								<input type="text" class="form-control" placeholder="Busca tu producto...">
+								<div class="input-group-append">
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form> <!-- search-wrap .end// -->
+					</div> <!-- col.// -->
+					<div class="nav">
+						<div class="nav__account">
+							<div class="nav__account-car">
+								<a href="#" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
+								<span class="nro-products" id="nro-products">0</span>
+							</div>
+							<div class="nav__account-login">
+								<a href="#" class="nav__link"><i class="fa fa-user"></i></a>
+								<div class="text">
+									<span class=" color-third">Bienvenido!</span>
+									<div>
+										<a href="#" class="link">Entrar</a> <span class=" color-third">| </span>
+										<a href="#" class="link"> Registrar</a>
+									</div>
+								</div>
+							</div>
+						</div> <!-- widgets-wrap.// -->
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
+			</div> <!-- container.// -->
+		</section> <!-- header-main .// -->
+	</header> <!-- section-header.// -->
+
+	<!-- ========================= SECTION PAGETOP ========================= -->
+	<section class="section-pagetop bg padding-45">
+		<div class="container">
+			<h2 class="title-page">Carrito de compras</h2>
+		</div> <!-- container //  -->
+	</section>
+	<!-- ========================= SECTION INTRO END// ========================= -->
+
+	<!-- ========================= SECTION CONTENT ========================= -->
+	<section class="section-content padding-y">
+		<div class="container">
+
+			<div class="row">
+				<main class="col-md-9">
+					<div class="card">
+
+						<table class="table table-borderless table-shopping-cart">
+							<thead class="text-muted">
+								<tr class="small text-uppercase">
+									<th scope="col">Producto</th>
+									<th scope="col" width="120">Cantidad</th>
+									<th scope="col" width="120">Precio</th>
+									<th scope="col" class="text-right" width="200"> </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="table-shopping__tr">
+									<td>
+										<figure class="itemside">
+											<div class="aside2"><img
+													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+													class="img-sm img-shopping"></div>
+											<figcaption class="info">
+												<a href="#" class="title text-dark">Some name of item goes here nice</a>
+												<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+											</figcaption>
+										</figure>
+									</td>
+									<td>
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+										</select>
+									</td>
+									<td>
+										<div class="price-wrap">
+											<var class="price">$1156.00</var>
+											<small class="text-muted"> $315.20 unidad </small>
+										</div> <!-- price-wrap .// -->
+									</td>
+									<td class="text-right">
+										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+											data-toggle="tooltip"> <i class="far fa-heart"></i></a>
+										<a href="" class="btn btn-danger"> Eliminar</a>
+									</td>
+								</tr>
+								<tr class="table-shopping__tr">
+									<td>
+										<figure class="itemside">
+											<div class="aside2"><img
+													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+													class="img-sm img-shopping"></div>
+											<figcaption class="info">
+												<a href="#" class="title text-dark">Product name goes here nice</a>
+												<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+											</figcaption>
+										</figure>
+									</td>
+									<td>
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+										</select>
+									</td>
+									<td>
+										<div class="price-wrap">
+											<var class="price">$149.97</var>
+											<small class="text-muted"> $75.00 unidad </small>
+										</div> <!-- price-wrap .// -->
+									</td>
+									<td class="text-right">
+										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+											data-toggle="tooltip"><i class="far fa-heart"></i></a>
+										<a href="" class="btn btn-danger btn-round"> Eliminar</a>
+									</td>
+								</tr>
+								<tr class="table-shopping__tr">
+									<td>
+										<figure class="itemside">
+											<div class="aside2"><img
+													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+													class="img-sm img-shopping"></div>
+											<figcaption class="info">
+												<a href="#" class="title text-dark">Another name of some product goes
+													just here</a>
+												<p class="small text-muted">Size: XL, Color: blue, Brand: Tissot</p>
+											</figcaption>
+										</figure>
+									</td>
+									<td>
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</td>
+									<td>
+										<div class="price-wrap">
+											<var class="price">$98.00</var>
+											<small class="text-muted"> $578.00 unidad</small>
+										</div> <!-- price-wrap .// -->
+									</td>
+									<td class="text-right">
+										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+											data-toggle="tooltip"> <i class="far fa-heart"></i></a>
+										<a href="" class="btn btn-danger btn-round"> Eliminar</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="card-body border-top">
+							<a href="#" class="btn btn-primary float-md-right"> Realizar pago <i
+									class="fa fa-chevron-right"></i> </a>
+							<a href="index" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continuar
+								comprando</a>
+						</div>
+					</div> <!-- card.// -->
+
+					<div class="alert alert-success mt-3">
+						<p class="icontext"><i class="icon text-success fa fa-truck"></i> Entrega gratuita de 1-2
+							semanas</p>
+					</div>
+
+				</main> <!-- col.// -->
+				<aside class="col-md-3">
+					<div class="card mb-3">
+						<div class="card-body">
+							<form>
+								<div class="form-group">
+									<label>¿Tienes un cupón?</label>
+									<div class="input-group">
+										<input type="text" class="form-control" name="" placeholder="Código de cupón">
+										<span class="input-group-append">
+											<button class="btn btn-primary">Aplicar</button>
+										</span>
+									</div>
+								</div>
+							</form>
+						</div> <!-- card-body.// -->
+					</div> <!-- card .// -->
+					<div class="card">
+						<div class="card-body">
+							<dl class="dlist-align">
+								<dt>Precio total:</dt>
+								<dd class="text-right">PEN 4500</dd>
+							</dl>
+							<dl class="dlist-align">
+								<dt>Descuento:</dt>
+								<dd class="text-right">PEN 0</dd>
+							</dl>
+							<dl class="dlist-align">
+								<dt>Total:</dt>
+								<dd class="text-right  h5"><strong>S/ 4,500</strong></dd>
+							</dl>
+							<hr>
+							<p class="text-center mb-3">
+								<img class="card-product"
+									src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/misc/payments.png"
+									height="26">
+							</p>
+
+						</div> <!-- card-body.// -->
+					</div> <!-- card .// -->
+				</aside> <!-- col.// -->
+			</div>
+
+		</div> <!-- container .//  -->
+	</section>
+	<!-- ========================= SECTION CONTENT END// ========================= -->
+
+	<!-- ========================= SECTION  ========================= -->
+	<section class="section-name bg padding-y">
+		<div class="container">
+			<h6>Política de pago y reembolso</h6>
+			<p>El tiempo que tu devolución se encuentra en tránsito se escapa de nuestro control, aunque una vez
+				ingresados a nuestro almacén los productos que devolviste, daremos inicio a tu proceso de reembolso lo
+				más rápido posible.</p>
+			<p>El método y tiempo de reembolso dependerá del método de pago utilizado en tu compra:</p>
+			<p>Tarjeta débito/crédito VISA, MasterCard, American Express o Diners; tu reembolso será efectuado al mismo
+				método de pago, en un plazo de 7 a 10 días hábiles desde el momento en el que se emita la nota de
+				crédito, tu banco o la entidad emisora de tu tarjeta de crédito pueden necesitar más tiempo para
+				procesar el reembolso.</p>
+			<p>Transferencia bancaría o pago en efectivo SafetyPay, a través de la banca por internet del BCP,
+				Interbank, BBVA, Scotiabank, Caja Trujillo o Caja Tacna . Solicitaremos el llenado de un formulario para
+				que nos brindes los datos bancarios de la cuenta a la cual realizaremos la transferencia de tu
+				reembolso, en un plazo de 15 a 20 días hábiles desde el momento en que recibamos el formulario, de ahí
+				tu Entidad Bancaria puede tomarse varios días más en procesar y hacer efectivo la devolución de tu
+				dinero.</p>
+			<p>En caso de que los datos del formulario estén erróneos solicitaremos nuevamente el llenado del mismo.</p>
+		</div><!-- container // -->
+	</section>
+	<!-- ========================= SECTION  END// ========================= -->
+
+	<!-- ========================= FOOTER ========================= -->
+	<footer class="section-footer border-top padding-y back-color-primary">
+		<div class="container">
+			<p class="float-md-right">
+				&copy Copyright 2021 Todos los derechos reservados
+			</p>
+			<p>
+				<a href="terminos">Términos y condiciones</a>
+			</p>
+		</div><!-- //container -->
+	</footer>
+	<!-- ========================= FOOTER END // ========================= -->
+
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

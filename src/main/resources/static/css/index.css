@@ -54,6 +54,9 @@
   color: #fff;
   font-size: 20px;
 }
+.itemside .aside2 {
+  width: 80px;
+}
 .img-wrap {
   text-align: center;
 }
@@ -117,6 +120,20 @@ a:hover {
   margin-top: 4px;
   margin-left: 5px;
 }
+.padding-45 {
+  padding: 30px 0;
+  /* margin-bottom: 30px; */
+}
+.img-shopping {
+  padding-top: 15px;
+  width: 80px;
+}
+.table-shopping__tr td {
+  vertical-align: middle;
+}
+.price {
+  display: block;
+}
 
 @media (max-width: 767px) {
   .card-product {
@@ -124,6 +141,9 @@ a:hover {
   }
 }
 @media (max-width: 991px) {
+  .aside2 img {
+    display: none;
+  }
   .fa-chevron-down {
     display: none !important;
   }

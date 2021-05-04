@@ -25,9 +25,9 @@ public class LoginController {
 		return "productos";
 	}
 	
-	@GetMapping("/registro")
-	public String registro() {
-		return "registro";
+	@GetMapping("/registrar")
+	public String registrar() {
+		return "registrar";
 	}
 	
 	@GetMapping("/login")

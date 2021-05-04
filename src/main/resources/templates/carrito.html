@@ -10,9 +10,7 @@
 </head>
 
 <body>
-
 	<header class="section-header">
-
 		<nav class="navbar navbar-dark navbar-expand p-0 back-color-third">
 			<div class="container">
 				<ul class="navbar-nav d-none d-md-flex mr-auto">
@@ -33,12 +31,12 @@
 		<section class="header-main border-bottom back-color-primary">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-2 col-6">
+					<div class="col-lg-2 col-6 col-sm-4">
 						<a href="index" class="brand-wrap">
-							<img class="logo" src="https://i.ibb.co/PrJZYFw/icon-project.png" width="100">
+							<img class="logo" src="https://i.ibb.co/NCTjMms/logo-icon.png" width="100">
 						</a> <!-- brand-wrap.// -->
 					</div>
-					<div class="col-lg-6 col-12 col-sm-12">
+					<div class="col-lg-6 col-12 col-sm-0 m-1 header__input-search">
 						<form action="#" class="search">
 							<div class="input-group w-100">
 								<input type="text" class="form-control" placeholder="Busca tu producto...">
@@ -50,10 +48,10 @@
 							</div>
 						</form> <!-- search-wrap .end// -->
 					</div> <!-- col.// -->
-					<div class="nav">
+					<div class="nav" > 
 						<div class="nav__account">
 							<div class="nav__account-car">
-								<a href="#" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
+								<a href="carrito" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
 								<span class="nro-products" id="nro-products">0</span>
 							</div>
 							<div class="nav__account-login">
@@ -61,8 +59,8 @@
 								<div class="text">
 									<span class=" color-third">Bienvenido!</span>
 									<div>
-										<a href="#" class="link">Entrar</a> <span class=" color-third">| </span>
-										<a href="#" class="link"> Registrar</a>
+										<a href="login" class="link">Ingresar</a> <span class=" color-third">| </span>
+										<a href="registrar" class="link"> Registrar</a>
 									</div>
 								</div>
 							</div>
@@ -84,120 +82,118 @@
 	<!-- ========================= SECTION CONTENT ========================= -->
 	<section class="section-content padding-y">
 		<div class="container">
-
 			<div class="row">
-				<main class="col-md-9">
+				<main class="col-12 col-sm-12 col-md-12 col-lg-9">
 					<div class="card">
-
-						<table class="table table-borderless table-shopping-cart">
-							<thead class="text-muted">
-								<tr class="small text-uppercase">
-									<th scope="col">Producto</th>
-									<th scope="col" width="120">Cantidad</th>
-									<th scope="col" width="120">Precio</th>
-									<th scope="col" class="text-right" width="200"> </th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-shopping__tr">
-									<td>
-										<figure class="itemside">
-											<div class="aside2"><img
-													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
-													class="img-sm img-shopping"></div>
-											<figcaption class="info">
-												<a href="#" class="title text-dark">Some name of item goes here nice</a>
-												<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-											</figcaption>
-										</figure>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-										</select>
-									</td>
-									<td>
-										<div class="price-wrap">
-											<var class="price">$1156.00</var>
-											<small class="text-muted"> $315.20 unidad </small>
-										</div> <!-- price-wrap .// -->
-									</td>
-									<td class="text-right">
-										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
-											data-toggle="tooltip"> <i class="far fa-heart"></i></a>
-										<a href="" class="btn btn-danger"> Eliminar</a>
-									</td>
-								</tr>
-								<tr class="table-shopping__tr">
-									<td>
-										<figure class="itemside">
-											<div class="aside2"><img
-													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
-													class="img-sm img-shopping"></div>
-											<figcaption class="info">
-												<a href="#" class="title text-dark">Product name goes here nice</a>
-												<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-											</figcaption>
-										</figure>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-										</select>
-									</td>
-									<td>
-										<div class="price-wrap">
-											<var class="price">$149.97</var>
-											<small class="text-muted"> $75.00 unidad </small>
-										</div> <!-- price-wrap .// -->
-									</td>
-									<td class="text-right">
-										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
-											data-toggle="tooltip"><i class="far fa-heart"></i></a>
-										<a href="" class="btn btn-danger btn-round"> Eliminar</a>
-									</td>
-								</tr>
-								<tr class="table-shopping__tr">
-									<td>
-										<figure class="itemside">
-											<div class="aside2"><img
-													src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
-													class="img-sm img-shopping"></div>
-											<figcaption class="info">
-												<a href="#" class="title text-dark">Another name of some product goes
-													just here</a>
-												<p class="small text-muted">Size: XL, Color: blue, Brand: Tissot</p>
-											</figcaption>
-										</figure>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-									</td>
-									<td>
-										<div class="price-wrap">
-											<var class="price">$98.00</var>
-											<small class="text-muted"> $578.00 unidad</small>
-										</div> <!-- price-wrap .// -->
-									</td>
-									<td class="text-right">
-										<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
-											data-toggle="tooltip"> <i class="far fa-heart"></i></a>
-										<a href="" class="btn btn-danger btn-round"> Eliminar</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
+						<div class="table-responsive text-nowrap">
+							<table class="table table-borderless table-shopping-cart">
+								<thead class="text-muted">
+									<tr class="small text-uppercase">
+										<th scope="col">Producto</th>
+										<th scope="col" width="120">Cantidad</th>
+										<th scope="col" width="120">Precio</th>
+										<th scope="col" class="text-right" width="200"> </th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="table-shopping__tr">
+										<td>
+											<figure class="itemside">
+												<div class="aside2"><img
+														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+														class="img-sm img-shopping"></div>
+												<figcaption class="info">
+													<a href="#" class="title text-dark">Some name of item goes here nice</a>
+													<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+												</figcaption>
+											</figure>
+										</td>
+										<td>
+											<select class="form-control">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+											</select>
+										</td>
+										<td>
+											<div class="price-wrap">
+												<var class="price">$1156.00</var>
+												<small class="text-muted"> $315.20 unidad </small>
+											</div> <!-- price-wrap .// -->
+										</td>
+										<td class="text-right">
+											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+												data-toggle="tooltip"> <i class="far fa-heart"></i></a>
+											<a href="" class="btn btn-danger"> Eliminar</a>
+										</td>
+									</tr>
+									<tr class="table-shopping__tr">
+										<td>
+											<figure class="itemside">
+												<div class="aside2"><img
+														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+														class="img-sm img-shopping"></div>
+												<figcaption class="info">
+													<a href="#" class="title text-dark">Product name goes here nice</a>
+													<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+												</figcaption>
+											</figure>
+										</td>
+										<td>
+											<select class="form-control">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+											</select>
+										</td>
+										<td>
+											<div class="price-wrap">
+												<var class="price">$149.97</var>
+												<small class="text-muted"> $75.00 unidad </small>
+											</div> <!-- price-wrap .// -->
+										</td>
+										<td class="text-right">
+											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+												data-toggle="tooltip"><i class="far fa-heart"></i></a>
+											<a href="" class="btn btn-danger btn-round"> Eliminar</a>
+										</td>
+									</tr>
+									<tr class="table-shopping__tr">
+										<td>
+											<figure class="itemside">
+												<div class="aside2"><img
+														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+														class="img-sm img-shopping"></div>
+												<figcaption class="info">
+													<a href="#" class="title text-dark">Another name of some product ..</a>
+													<p class="small text-muted">Size: XL, Color: blue, Brand: Tissot</p>
+												</figcaption>
+											</figure>
+										</td>
+										<td>
+											<select class="form-control">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+										</td>
+										<td>
+											<div class="price-wrap">
+												<var class="price">$98.00</var>
+												<small class="text-muted"> $578.00 unidad</small>
+											</div> <!-- price-wrap .// -->
+										</td>
+										<td class="text-right">
+											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
+												data-toggle="tooltip"> <i class="far fa-heart"></i></a>
+											<a href="" class="btn btn-danger btn-round"> Eliminar</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 						<div class="card-body border-top">
 							<a href="#" class="btn btn-primary float-md-right"> Realizar pago <i
 									class="fa fa-chevron-right"></i> </a>
@@ -212,7 +208,7 @@
 					</div>
 
 				</main> <!-- col.// -->
-				<aside class="col-md-3">
+				<aside class="col-12 col-sm-12 col-md-12 col-lg-3">
 					<div class="card mb-3">
 						<div class="card-body">
 							<form>
@@ -243,11 +239,11 @@
 								<dd class="text-right  h5"><strong>S/ 4,500</strong></dd>
 							</dl>
 							<hr>
-							<p class="text-center mb-3">
+							<!--<p class="text-center mb-3 ml-5 mr-5">
 								<img class="card-product"
 									src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/misc/payments.png"
-									height="26">
-							</p>
+									 height="26">
+							</p>-->
 
 						</div> <!-- card-body.// -->
 					</div> <!-- card .// -->
@@ -282,16 +278,16 @@
 	<!-- ========================= SECTION  END// ========================= -->
 
 	<!-- ========================= FOOTER ========================= -->
-	<footer class="section-footer border-top padding-y back-color-primary">
-		<div class="container">
-			<p class="float-md-right">
-				&copy Copyright 2021 Todos los derechos reservados
-			</p>
-			<p>
-				<a href="terminos">Términos y condiciones</a>
-			</p>
-		</div><!-- //container -->
-	</footer>
+	<footer class="section-footer border-top back-color-primary absolute-bottom">
+        <div class="container">
+            <p class="float-md-right">
+                &copy Copyright 2021 Todos los derechos reservados
+            </p>
+            <p class="section-content-text">
+                <a href="terminos">Términos y condiciones</a>
+            </p>
+        </div><!-- //container -->
+    </footer>
 	<!-- ========================= FOOTER END // ========================= -->
 
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>

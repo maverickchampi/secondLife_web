@@ -12,7 +12,7 @@ body{
 }
 .mx-auto{
 	max-width:520px; 
-	margin-top:40px;
+	margin-top:100px;
 	padding: 25px;
 }
 .btn-facebook{
@@ -40,7 +40,7 @@ body{
 	left:0px; 
 	right:0px;
 	bottom:0px; 
-	height:50px; 
+	height:71px; 
 	z-index:0;
 }
 

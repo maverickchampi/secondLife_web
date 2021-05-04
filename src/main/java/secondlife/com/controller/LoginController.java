@@ -34,4 +34,9 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
+	
+	@GetMapping("/perfil")
+	public String perfil() {
+		return "perfil";
+	}
 }

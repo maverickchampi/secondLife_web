@@ -44,4 +44,9 @@ public class LoginController {
 	public String perfil() {
 		return "perfil";
 	}
+	
+	@GetMapping("/cotizar")
+	public String cotizar() {
+		return "cotizar";
+	}
 }

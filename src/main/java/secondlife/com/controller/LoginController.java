@@ -24,6 +24,11 @@ public class LoginController {
 	public String productos() {
 		return "productos";
 	}
+
+	@GetMapping("/producto")
+	public String producto() {
+		return "producto";
+	}
 	
 	@GetMapping("/registrar")
 	public String registrar() {
@@ -38,5 +43,10 @@ public class LoginController {
 	@GetMapping("/perfil")
 	public String perfil() {
 		return "perfil";
+	}
+	
+	@GetMapping("/cotizar")
+	public String cotizar() {
+		return "cotizar";
 	}
 }

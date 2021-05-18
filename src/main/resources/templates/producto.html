@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Second Life</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+	<header class="section-header">
+		<nav class="navbar navbar-dark navbar-expand p-0 back-color-third">
+			<div class="container">
+				<ul class="navbar-nav d-none d-md-flex mr-auto">
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a href="#" class="nav-link color-primary"> Llamar: +51 987654321 </a></li>
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle color-primary" data-toggle="dropdown"> Español </a>
+						<!-- <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
+				<li><a class="dropdown-item" href="#"></a></li>
+		    </ul> -->
+					</li>
+				</ul> <!-- list-inline //  -->
+			</div> <!-- navbar-collapse .// -->
+			</div> <!-- container //  -->
+		</nav> <!-- header-top-light.// -->
+
+		<section class="header-main border-bottom back-color-primary">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-6 col-sm-4">
+						<a href="index" class="brand-wrap">
+							<img class="logo" src="https://i.ibb.co/NCTjMms/logo-icon.png" width="100">
+						</a> <!-- brand-wrap.// -->
+					</div>
+					<div class="col-lg-6 col-12 col-sm-0 m-1 header__input-search">
+						<form action="#" class="search">
+							<div class="input-group w-100">
+								<input type="text" class="form-control" placeholder="Busca tu producto...">
+								<div class="input-group-append">
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form> <!-- search-wrap .end// -->
+					</div> <!-- col.// -->
+					<div class="nav">
+						<div class="nav__account">
+							<div class="nav__account-car">
+								<a href="carrito" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
+								<span class="nro-products" id="nro-products">0</span>
+							</div>
+							<div class="nav__account-login">
+								<a href="perfil" class="nav__link"><i class="fa fa-user"></i></a>
+								<div class="text">
+									<span class=" color-third">Bienvenido!</span>
+									<div>
+										<a href="login" class="link">Ingresar</a> <span class=" color-third">| </span>
+										<a href="registrar" class="link"> Registrar</a>
+									</div>
+								</div>
+							</div>
+						</div> <!-- widgets-wrap.// -->
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
+			</div> <!-- container.// -->
+		</section> <!-- header-main .// -->
+	</header> <!-- section-header.// -->
+
+	<!-- ========================= SECTION PAGETOP ========================= -->
+	<section class="section-pagetop bg padding-45">
+		<div class="container">
+			<h2 class="title-page">Producto</h2>
+			<nav>
+				<ol class="breadcrumb text-white">
+					<li class="breadcrumb-item"><a href="index">Inicio</a></li>
+					<li class="breadcrumb-item"><a href="#">Productos</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Producto</li>
+				</ol>
+			</nav>
+		</div> <!-- container //  -->
+	</section>
+	<!-- =========================  END// ========================= -->
+	<!-- ============================ COMPONENT 3 ================================= -->
+	<div class="container">
+		<div class="card">
+			<div class="row no-gutters">
+				<aside class="col-sm-6 border-right container-img-detail">
+					<article class="gallery-wrap" style="margin:auto">
+						<div class="img-big-wrap">
+							<a class="link-img-detail" href="#"><img class="card-product-detail"
+									src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg"></a>
+						</div> <!-- img-big-wrap.// -->
+					</article> <!-- gallery-wrap .end// -->
+				</aside>
+				<main class="col-sm-6">
+					<article class="content-body description">
+						<h3 class="title">Logitec gaming headphone</h3>
+						<div class="rating-wrap mb-3">
+							<span class="badge badge-warning"> <i class="fa fa-star"></i> 3.8</span>
+							<small class="text-muted ml-2">45 reviews</small>
+						</div>
+						<p>Here goes description consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco </p>
+
+						<ul class="list-check mb-4">
+							<li>Best performance of battery</li>
+							<li>5 years warranty for this product</li>
+							<li>Best performance of battery</li>
+						</ul>
+
+						<div class="row mt-3 align-items-center">
+							<div class="col">
+								<span class="price h4">$815.00</span>
+								<select class="form-control w-50">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+								</select>
+							</div> <!-- col.// -->
+							<div class="col text-right">
+								<a href="#" class="btn  btn-primary"> <span class="text">Añadir al carrito</span> <i
+										class="icon fas fa-shopping-cart"></i> </a>
+								<a href="#" class="btn  btn-light"> <i class="far fa-heart"></i> </a>
+							</div> <!-- col.// -->
+						</div> <!-- row.// -->
+
+					</article> <!-- product-info-aside .// -->
+				</main> <!-- col.// -->
+			</div> <!-- row.// -->
+		</div> <!-- card.// -->
+	</div> <!-- container //  -->
+	<!-- ============================ COMPONENT 3 END .// ================================= -->
+
+	<!-- ========================= SECTION  ========================= -->
+	<section class="section-name  padding-y-sm">
+		<div class="container">
+
+			<header class="section-heading">
+				<a href="productos" class="btn btn-outline-primary float-right">Ver más</a>
+				<h3 class="section-title">Recomendados</h3>
+			</header><!-- sect-heading -->
+
+			<div class="row">
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<figure class="card card-product-grid">
+						<div class="img-wrap">
+							<img class="card-product"
+								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
+						</div> <!-- img-wrap.// -->
+						<figcaption class="info-wrap">
+							<div class="fix-height">
+								<a href="#" class="title">Product name goes here just for demo item</a>
+								<div class="price-wrap mt-2">
+									<span class="price">$1280</span>
+								</div> <!-- price-wrap.// -->
+							</div>
+							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
+						</figcaption>
+					</figure>
+				</div> <!-- col.// -->
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<figure class="card card-product-grid">
+						<div class="img-wrap">
+							<img class="card-product"
+								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
+						</div> <!-- img-wrap.// -->
+						<figcaption class="info-wrap">
+							<div class="fix-height">
+								<a href="#" class="title">Product name goes here just for demo item</a>
+								<div class="price-wrap mt-2">
+									<span class="price">$1280</span>
+								</div> <!-- price-wrap.// -->
+							</div>
+							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
+						</figcaption>
+					</figure>
+				</div> <!-- col.// -->
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<figure class="card card-product-grid">
+						<div class="img-wrap">
+							<img class="card-product"
+								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
+						</div> <!-- img-wrap.// -->
+						<figcaption class="info-wrap">
+							<div class="fix-height">
+								<a href="#" class="title">Product name goes here just for demo item</a>
+								<div class="price-wrap mt-2">
+									<span class="price">$1280</span>
+								</div> <!-- price-wrap.// -->
+							</div>
+							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
+						</figcaption>
+					</figure>
+				</div><!-- col.// -->
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<figure class="card card-product-grid">
+						<div class="img-wrap">
+							<img class="card-product"
+								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
+						</div> <!-- img-wrap.// -->
+						<figcaption class="info-wrap">
+							<div class="fix-height">
+								<a href="#" class="title">Product name goes here just for demo item</a>
+								<div class="price-wrap mt-2">
+									<span class="price">$1280</span>
+								</div> <!-- price-wrap.// -->
+							</div>
+							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
+						</figcaption>
+					</figure>
+				</div> <!-- col.// -->
+
+			</div> <!-- row.// -->
+
+		</div><!-- container // -->
+	</section>
+	<!-- ========================= SECTION  END// ========================= -->
+
+	<!-- ========================= FOOTER ========================= -->
+	<footer class="section-footer border-top back-color-primary absolute-bottom">
+		<div class="container">
+			<p class="float-md-right">
+				&copy Copyright 2021 Todos los derechos reservados
+			</p>
+			<p class="section-content-text">
+				<a href="terminos">Términos y condiciones</a>
+			</p>
+		</div><!-- //container -->
+	</footer>
+	<!-- ========================= FOOTER END // ========================= -->
+
+
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+</body>

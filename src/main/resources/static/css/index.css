@@ -142,6 +142,7 @@ a:hover {
 .back-color-primary {
   background-color: #011936;
   padding: 20px 0;
+  margin-bottom: 2px;
 }
 .back-color-secondary {
   background-color: #ed254e;

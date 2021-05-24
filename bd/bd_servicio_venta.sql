@@ -197,7 +197,7 @@ create table tb_cliente (
 	fec_nac_clie timestamp not null default current_timestamp,
     tel_clie char(9),
     id_log char(5),
-    estado int
+    estado int not null
 );
 alter table tb_cliente 
 	add constraint PKclie primary key (id_clie),
@@ -205,7 +205,7 @@ alter table tb_cliente
     add constraint CKclie_dni check (length(dni_clie)=8),
     add constraint CKclie_dato check (length(nom_clie)>=2 and (length(ape_clie)>=2)),
     add constraint CKclie_tel check (length(tel_clie)=9),
-    add constraint CKclie_est check (estado in (1, 2) or null),
+    add constraint CKclie_est check (estado in (1, 2)),
 	alter estado set default 1;
 DELIMITER $$
 CREATE TRIGGER tg_insertar_idcliente

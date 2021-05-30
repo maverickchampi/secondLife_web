@@ -48,7 +48,7 @@ alter table tb_usuario
 	add constraint PKusua primary key (id_usua),
 	add constraint FKusua_rol foreign key(id_rol) references tb_rol(id_rol),
     add constraint CKusua_dni check (length(dni_usua)=8),
-    add constraint CKusua_dato check (length(nom_usua)>=2 and (length(ape_emp)>=2)),
+    add constraint CKusua_dato check (length(nom_usua)>=2 and (length(ape_usua)>=2)),
     add constraint CKusua_tel check (length(tel_usua)=9),
     
     add constraint CKusua_user check (length(usuario)>=7),
@@ -64,12 +64,13 @@ BEFORE INSERT ON tb_usuario
 FOR EACH ROW
 BEGIN
     IF (SELECT COUNT(*) FROM tb_usuario)=0   THEN
-        SET NEW.id_usua= 'ep001';
+        SET NEW.id_usua= 'us001';
     ELSE
-        SET NEW.id_usua= CONCAT('ep', LPAD((SELECT COUNT(*) FROM tb_usuario)+1, 3, '0'));
+        SET NEW.id_usua= CONCAT('us', LPAD((SELECT COUNT(*) FROM tb_usuario)+1, 3, '0'));
 	END IF;
 end$$
-delimiter ;    
+delimiter ;
+
 
 /*---------------tabla numero de cuenta----------------*/
 create table tb_tarjeta (
@@ -268,7 +269,7 @@ create table tb_boleta (
 );
 alter table tb_boleta
 	add constraint PKbol primary key (num_bol),
-    add constraint FKbol_usua foreign key (id_usua) references tb_usua(id_usua),
+    add constraint FKbol_usua foreign key (id_usua) references tb_usuario(id_usua),
     add constraint FKbol_direc foreign key (id_direc) references tb_direccion(id_direc),
     add constraint CKbol_impo check (impo_bol>=1.0),
     add constraint CKbol_envio check (envio>=1.0),
@@ -386,6 +387,9 @@ insert into tb_cliente values (null,'76428945', 'Juan', 'Rodriguez Suarez', '200
 insert into tb_cliente values (null,'73248756', 'Roberto', 'Fernandez Ramirez', '2002-04-23', '987654321', null, 1);
 insert into tb_cliente values (null,'73200896', 'Alex', 'Quispe Cavero', '2002-04-23', '987654321', null, 1);
 */
+
+insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'alex7800', 'alexito02', 'alexelleon@gmail.com',1);
+
 insert into tb_rol values (null, 'técnico infomático');
 insert into tb_rol values (null, 'personal seguridad');
 insert into tb_rol values (null, 'personal delivery');
@@ -393,127 +397,127 @@ insert into tb_rol values (null, 'cliente');
 insert into tb_rol values (null, 'proveedor');
 
 /*----------------------LAPTOPS-------------------------*/
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);
 insert into tb_producto values (null, '632541-001', 1, 'HP', '15-dw1085la', 'Procesador: i3-10110U; RAM: 4GB DDR4; ROM: 256GB SSD; Pantalla: 15,6" FHD',
 								'Equipo en buen estado, pintura refaccionada', '2021-05-07', 1, 1500.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 500.0,'no imagen', 4.5, 1);                      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 500.0,'no imagen', 4.5, 1);                      
 insert into tb_producto values (null, '632541-002', 1, 'HP', '15-dw1085la', 'Procesador: i3-10110U; RAM: 4GB DDR4; ROM: 256GB SSD; Pantalla: 15,6" FHD',
 								'Equipo en buen estado, sistema instalado y puerto usb reparado', '2021-05-15', 1, 1000.0, 'no imagen', 7.5, 1);
   
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1, 200.0, 'no imagen', 2.7, 1);      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1, 200.0, 'no imagen', 2.7, 1);      
 insert into tb_producto values (null, '632541-003', 1, 'HP', '15-dw1085la', 'Procesador: i3-10110U; RAM: 4GB DDR4; ROM: 256GB SSD; Pantalla: 15,6" FHD',
 								 'Equipo en buen estado, completamente restaurado','2021-05-25', 1, 800.0, 'no imagen', 7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-10', 1, 2800.0, 'no imagen', 6.0, 1);                              
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-10', 1, 2800.0, 'no imagen', 6.0, 1);                              
 insert into tb_producto values (null, '732685-001', 1, 'Apple', 'Macbook Air 13', 'Procesador: M1; RAM: 8GB; ROM: 256GB; Pantalla: 13" FHD',
 								'Equipo en buen estado, pintura refaccionada','2020-07-07', 1, 4000.0, 'no imagen', 8.5, 1);
 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 2000.0, 'no imagen', 4.5, 1);                                      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 2000.0, 'no imagen', 4.5, 1);                                      
 insert into tb_producto values (null, '732685-002', 1, 'Apple', 'Macbook Air 13', 'Procesador: M1; RAM: 8GB; ROM: 256GB; Pantalla: 13" FHD',
 								 'Equipo en buen estado, sistema instalado y puerto usb reparado', '2020-07-15', 1,  2700.0, 'no imagen', 7.5, 1);
 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1,  1200.0, 'no imagen', 2.7, 1);                                      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1,  1200.0, 'no imagen', 2.7, 1);                                      
 insert into tb_producto values (null, '732685-003', 1, 'Apple', 'Macbook Air 13', 'Procesador: M1; RAM: 8GB; ROM: 256GB; Pantalla: 13" FHD',
 								'Equipo en buen estado, completamente restaurado','2020-07-25', 1, 2000.0, 'no imagen', 7.0, 1);
  
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1,  4000.0, 'no imagen', 2.7, 1);      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1,  4000.0, 'no imagen', 2.7, 1);      
 insert into tb_producto values (null, '852147-001', 1, 'ASUS', 'ROG Zephyrus G14', 'Procesador: Ryzen 9 4900HS; RAM: 16GB; ROM: 1TB SSD; Pantalla: 14" QHD',
 								'Equipo en buen estado, completamente restaurado', '2020-11-07', 1, 7000.0, 'no imagen', 7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-10', 1, 3500.0, 'no imagen', 6.0, 1);      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-10', 1, 3500.0, 'no imagen', 6.0, 1);      
 insert into tb_producto values (null, '852147-002', 1, 'ASUS', 'ROG Zephyrus G14', 'Procesador: Ryzen 9 4900HS; RAM: 16GB; ROM: 1TB SSD; Pantalla: 14" QHD',
 								'Equipo en buen estado, pintura refaccionada', '2021-11-13', 1, 6000.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 3000.0, 'no imagen', 4.5, 1);                                      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 3000.0, 'no imagen', 4.5, 1);                                      
 insert into tb_producto values (null, '852147-003', 1, 'ASUS', 'ROG Zephyrus G14', 'Procesador:Ryzen 9 4900HS; RAM: 16GB; ROM: 1TB SSD; Pantalla: 14" QHD',
 								'Equipo en buen estado, sistema instalado y puerto usb reparado', '2021-11-25', 1, 5500.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una laptop ...', 'El equipo se muestra sin placa base, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1, 2500.0, 'no imagen', 2.0, 1);      						
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin placa base, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1, 2500.0, 'no imagen', 2.0, 1);      						
 insert into tb_producto values (null, '852147-004', 1, 'ASUS', 'ROG Zephyrus G14', 'Procesador: Ryzen 9 4900HS; RAM: 16GB; ROM: 1TB SSD; Pantalla: 14" QHD',
 								'Equipo en buen estado, completamente restaurado', '2021-11-30', 1, 5000.0, 'no imagen', 2.0, 1);
 
 
 /*----------------------IMPRESORAS-------------------------*/
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 450.0, 'no imagen', 6.0, 1);      	
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 450.0, 'no imagen', 6.0, 1);      	
 insert into tb_producto values (null, '524786-001', 2, 'HP', 'Multifuncional Ink Tank 415', 'Capacidad: 60 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, pintura refaccionada y tinta al 100%', '2020-07-07', 1, 700.0, 'no imagen', 8.5, 1);
                         
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 400.0, 'no imagen', 4.5, 1);      	                                
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 400.0, 'no imagen', 4.5, 1);      	                                
 insert into tb_producto values (null, '524786-002', 2, 'HP', 'Multifuncional Ink Tank 415', 'Capacidad: 60 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, partes refaccionadas y tinta al 100%', '2020-07-15', 1, 650.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 250.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 250.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '524786-003', 2, 'HP', 'Multifuncional Ink Tank 415', 'Capacidad: 60 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado y tinta al 100%','2020-07-25', 1, 550.0, 'no imagen', 7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 300.0, 'no imagen', 6.0, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 300.0, 'no imagen', 6.0, 1);                                    
 insert into tb_producto values (null, '374905-001', 2, 'CANON', 'Multifuncional Color G2110', 'Capacidad: 100 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, pintura refaccionada y tinta al 100%', '2020-07-07', 1, 500.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 250.0, 'no imagen', 4.5, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 250.0, 'no imagen', 4.5, 1);                                    
 insert into tb_producto values (null, '374905-002', 2, 'CANON', 'Multifuncional Color G2110', 'Capacidad: 100 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, partes refaccionadas y tinta al 100%', '2020-07-15', 1,  450.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 150.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 150.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '374905-003', 2, 'CANON', 'Multifuncional Color G2110', 'Capacidad: 100 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado y tinta al 100%', '2020-07-25', 1, 400.0, 'no imagen', 7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 700.0, 'no imagen', 6.0, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra ligeros raspones en el cuerpo y nivel de tinta al 50%', '2021-05-10', 1, 700.0, 'no imagen', 6.0, 1);                                    
 insert into tb_producto values (null, '842364-001', 2, 'Epson', 'Multifuncional Wifi EcoTank L4160', 'Capacidad: 100 hojas; Wi-Fi: Si; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, pintura refaccionada y tinta al 100%', '2020-07-07', 1, 1000.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 650.0, 'no imagen', 4.5, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo se muestra con daños en la bandeja y sin deposito de tinta', '2021-05-10', 1, 650.0, 'no imagen', 4.5, 1);                                    
 insert into tb_producto values (null, '842364-002', 2, 'Epson', 'Multifuncional Wifi EcoTank L4160', 'Capacidad: 100 hojas; Wi-Fi: Si; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, partes refaccionadas y tinta al 100%', '2020-07-15', 1, 850.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 500.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo muestra sistema de impresion dañado, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 500.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '842364-003', 2, 'Epson', 'Multifuncional Wifi EcoTank L4160', 'Capacidad: 100 hojas; Wi-Fi: Si; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado y tinta al 100%', '2020-07-25', 1, 700.0, 'no imagen', 7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una impresora ...', 'El equipo se muestra sin sistema de impresion, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 450.0, 'no imagen', 2.0, 1);    
+insert into tb_registro values (null, 1, 'us001', 'Es una impresora ...', 'El equipo se muestra sin sistema de impresion, partes del cuerpo rotas y sin deposito de tinta', '2021-05-10', 1, 450.0, 'no imagen', 2.0, 1);    
 insert into tb_producto values (null, '842364-004', 2, 'Epson', 'Multifuncional Wifi EcoTank L4160', 'Capacidad: 100 hojas; Wi-Fi: Si; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado y tinta al 100%', '2020-07-25', 1, 650.0, 'no imagen', 7.0, 1);
               
               
 /*----------------------SMARTPHONES-------------------------*/
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 3500.0, 'no imagen', 6.0, 1);    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 3500.0, 'no imagen', 6.0, 1);    
 insert into tb_producto values (null, '125487-001', 3, 'Apple', 'iPhone 12 Blue', 'Pantalla: 6.1" FHD+; RAM: 4GB; ROM: 128GB; Procesador: A14 Bionic; Cámara posterior: 12MP; Cámara frontal: 12MP',
 								'Equipo en buen estado, pintura refaccionada', '2020-07-07', 1, 4000.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo se muestra con parte posterior quebrada', '2021-05-10', 1, 3200.0, 'no imagen', 4.5, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo se muestra con parte posterior quebrada', '2021-05-10', 1, 3200.0, 'no imagen', 4.5, 1);                                    
 insert into tb_producto values (null, '125487-002', 3, 'Apple', 'iPhone 12 Blue', 'Pantalla: 6.1" FHD+; RAM: 4GB; ROM: 128GB; Procesador: A14 Bionic; Cámara posterior: 12MP; Cámara frontal: 12MP',
 								'Equipo en buen estado, vidrio reemplazado', '2020-07-15', 1, 3800.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 3000.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 3000.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '125487-003', 3, 'Apple', 'iPhone 12 Blue', 'Capacidad: 60 hojas; Wi-Fi: No; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25', 1, 3500.0, 'no imagen', 7.0, 1);
 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 800.0, 'no imagen', 6.0, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 800.0, 'no imagen', 6.0, 1);                                    
 insert into tb_producto values (null, '524861-001', 3, 'Xiaomi', 'Poco X3 NFC', 'Pantalla: 6.67" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 732G; Cámara posterior: 64MP; Cámara frontal: 20MP',
 								'Equipo en buen estado, pintura refaccionada', '2020-07-07', 1, 1000.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo se muestra con pantalla quebrada', '2021-05-10', 1, 600.0, 'no imagen', 4.5, 1);                                   
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo se muestra con pantalla quebrada', '2021-05-10', 1, 600.0, 'no imagen', 4.5, 1);                                   
 insert into tb_producto values (null, '524861-002', 3, 'Xiaomi', 'Poco X3 NFC', 'Pantalla: 6.67" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 732G; Cámara posterior: 64MP; Cámara frontal: 20MP',
 								'Equipo en buen estado, vidrio reemplazado', '2020-07-15', 1, 800.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 450.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 450.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '524861-003', 3, 'Xiaomi', 'Poco X3 NFC', 'Pantalla: 6.67" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 732G; Cámara posterior: 64MP; Cámara frontal: 20MP',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25', 1, 750.0, 'no imagen', 7.0, 1);
                                 
- insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 1200.0, 'no imagen', 6.0, 1);                                   
+ insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra ligeros raspones en el cuerpo', '2021-05-10', 1, 1200.0, 'no imagen', 6.0, 1);                                   
 insert into tb_producto values (null, '993254-001', 3, 'Samsung', 'Galaxy A71 Blanco', 'Pantalla: 6.7" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 730; Cámara posterior: 40MP; Cámara frontal: 32MP',
 								'Equipo en buen estado, pintura refaccionada', '2020-07-07', 1, 1400.0, 'no imagen', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo se muestra con pantalla quebrada', '2021-05-10', 1, 1000.0, 'no imagen', 4.5, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo se muestra con pantalla quebrada', '2021-05-10', 1, 1000.0, 'no imagen', 4.5, 1);                                    
 insert into tb_producto values (null, '993254-002', 3, 'Samsung', 'Galaxy A71 Blanco', 'Pantalla: 6.7" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 730; Cámara posterior: 40MP; Cámara frontal: 32MP',
 								'Equipo en buen estado, vidrio reemplazado', '2020-07-15', 1, 1200.0, 'no imagen', 7.5, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 600.0, 'no imagen', 2.7, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra pantalla quebrada, daño en el cuerpo y sistema bloqueado', '2021-05-10', 1, 600.0, 'no imagen', 2.7, 1);                                    
 insert into tb_producto values (null, '993254-003', 3, 'Samsung', 'Galaxy A71 Blanco', 'Pantalla: 6.7" FHD+; RAM: 6GB; ROM: 128GB; Procesador: Qualcomm Snapdragon 730; Cámara posterior: 40MP; Cámara frontal: 32MP',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25', 1, 800.0, 'no imagen',  7.0, 1);
                                 
-insert into tb_registro values (null, 1, 'cl001', 'Es una celular ...', 'El equipo muestra pantalla inservivble, daño en la parte posterior y sistema bloqueado', '2021-05-10', 1, 550.0, 'no imagen', 2.0, 1);                                    
+insert into tb_registro values (null, 1, 'us001', 'Es una celular ...', 'El equipo muestra pantalla inservivble, daño en la parte posterior y sistema bloqueado', '2021-05-10', 1, 550.0, 'no imagen', 2.0, 1);                                    
 insert into tb_producto values (null, '993254-004', 3, 'Samsung', 'Galaxy A71 Blanco', 'Capacidad: 100 hojas; Wi-Fi: Si; Bluetooth: No; NFC: No',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25',  1, 750.0, 'no imagen', 7.0, 1);
 

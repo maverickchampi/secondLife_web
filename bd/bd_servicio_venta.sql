@@ -19,33 +19,57 @@ alter table tb_categoria
 	modify id_categ int auto_increment,
     alter estado set default 1;
     
-/*---------------tabla login----------------*/
-create table tb_login (
-	id_log char(5) not null,
+/*----------------tabla rol----------------*/
+create table tb_rol (
+	id_rol int not null,
+	nom_rol varchar(250) not null
+);
+alter table tb_rol
+	add constraint PKrol primary key (id_rol),
+    add constraint CKrol_nom check (length(nom_rol)>=3),
+    modify id_rol int auto_increment;
+ 
+/*----------------tabla empleado----------------*/
+create table tb_usuario (
+	id_usua char(5) not null,   
+	dni_usua char(8) not null,
+	id_rol int not null,
+	nom_usua  varchar(100) not null,
+	ape_usua varchar(100) not null,
+	tel_usua char(9) not null,
+	fec_nac_usua timestamp not null,
+    
 	usuario varchar(15) not null, 
 	pass varchar(15) not null,  
 	email_log varchar(100) not null,
-    estado int not null	
+    estado int not null
 );
-alter table tb_login 
-	add constraint PKlogin primary key (id_log),
-    add constraint CKusua check (length(usuario)>=7),
+alter table tb_usuario
+	add constraint PKusua primary key (id_usua),
+	add constraint FKusua_rol foreign key(id_rol) references tb_rol(id_rol),
+    add constraint CKusua_dni check (length(dni_usua)=8),
+    add constraint CKusua_dato check (length(nom_usua)>=2 and (length(ape_emp)>=2)),
+    add constraint CKusua_tel check (length(tel_usua)=9),
+    
+    add constraint CKusua_user check (length(usuario)>=7),
     add constraint CKpass check (length(pass)>=7),
-    add constraint CKlogins_est check (estado in (1, 2)),
     add constraint CKlogin_email check (length(email_log)>=10),
-    alter estado set default 1;
-DELIMITER $$
-CREATE TRIGGER tg_insertar_idlogin
-BEFORE INSERT ON tb_login
+    
+	add constraint CKusua_est check (estado in (1, 2)),
+	alter estado set default 1;
+    
+delimiter $$
+create trigger tg_insertar_idusuario
+BEFORE INSERT ON tb_usuario
 FOR EACH ROW
 BEGIN
-    IF (SELECT COUNT(*) FROM tb_login)=0   THEN
-        SET NEW.id_log= 'lg001';
+    IF (SELECT COUNT(*) FROM tb_usuario)=0   THEN
+        SET NEW.id_usua= 'ep001';
     ELSE
-        SET NEW.id_log= CONCAT('lg', LPAD((SELECT COUNT(*) FROM tb_login)+1, 3, '0'));
+        SET NEW.id_usua= CONCAT('ep', LPAD((SELECT COUNT(*) FROM tb_usuario)+1, 3, '0'));
 	END IF;
-END$$
-DELIMITER ;
+end$$
+delimiter ;    
 
 /*---------------tabla numero de cuenta----------------*/
 create table tb_tarjeta (
@@ -54,11 +78,11 @@ create table tb_tarjeta (
     num_tarj char(16) not null,
     fec_venc date not null,
     cvv int not null,
-    id_log char(5) not null
+    id_usua char(5) not null
 );
 alter table tb_tarjeta
 	add constraint PKtarjeta primary key (id_tarj),
-    add constraint FKtarj_log foreign key(id_log) references tb_login(id_log),
+    add constraint FKtarj_usua foreign key(id_usua) references tb_usuario(id_usua),
     add constraint CKtarj_tip check (length(tip_tarj)>=4),
     add constraint CKtarj_num check (length(num_tarj)=16),
     add constraint CKtarj_cvv check (cvv>=100 and cvv<=999);
@@ -117,11 +141,11 @@ create table tb_direccion(
     desc_direc varchar(256) not null,
     etiqueta varchar(15) not null,
     id_dist  int not null,
-	id_log char(5) not null
+	id_usua char(5) not null
 );
 alter table tb_direccion
 	add constraint PKdireccion primary key(id_direc),
-     add constraint FKdirec_log foreign key(id_log) references tb_login(id_log),
+     add constraint FKdirec_usua foreign key(id_usua) references tb_usuario(id_usua),
 	add constraint FKdirec_dist foreign key(id_dist) references tb_distrito(id_dist),
 	add constraint CKdirec_desc check (length(desc_direc)>=4);
 delimiter $$
@@ -136,95 +160,11 @@ BEGIN
 	END IF;
 end$$
 delimiter ;      
-/*----------------tabla rol----------------*/
-create table tb_rol (
-	id_rol int not null,
-	nom_rol varchar(250) not null,
-	sue_min decimal(8,2) not null,
-	sue_max decimal(8,2) not null
-);
-alter table tb_rol
-	add constraint PKrol primary key (id_rol),
-    add constraint CKrol_nom check (length(nom_rol)>=3),
-    add constraint CKrol_suemax check (sue_min>=930 and sue_min<=1200),
-    add constraint CKrol_suemin check (sue_max>=1200 and sue_max<=5000),
-    modify id_rol int auto_increment;
- 
-/*----------------tabla empleado----------------*/
-create table tb_empleado (
-	id_emp char(5) not null,   
-	dni_emp char(8) not null,
-	id_rol int not null,
-	nom_emp  varchar(100) not null,
-	ape_emp varchar(100) not null,
-	tel_emp char(9) not null,
-	dir_emp varchar(256) not null,   
-	fec_nac_emp timestamp not null,
-	obs_emp  varchar(256),
-	sue_emp decimal(8,2) not null,
-    id_log char(5) not null,
-    estado int not null
-);
-alter table tb_empleado
-	add constraint PKemp primary key (id_emp),
-	add constraint FKemp_rol foreign key(id_rol) references tb_rol(id_rol),
-    add constraint FKemp_log foreign key (id_log) references tb_login (id_log),
-    add constraint CKemp_dni check (length(dni_emp)=8),
-    add constraint CKemp_dato check (length(nom_emp)>=2 and (length(ape_emp)>=2)),
-    add constraint CKemp_tel check (length(tel_emp)=9),
-    add constraint CKemp_sue check (sue_emp>=0 and sue_emp<=5000),
-	add constraint CKemp_est check (estado in (1, 2)),
-	alter estado set default 1;
-delimiter $$
-create trigger tg_insertar_idempleado
-BEFORE INSERT ON tb_empleado
-FOR EACH ROW
-BEGIN
-    IF (SELECT COUNT(*) FROM tb_empleado)=0   THEN
-        SET NEW.id_emp= 'ep001';
-    ELSE
-        SET NEW.id_emp= CONCAT('ep', LPAD((SELECT COUNT(*) FROM tb_empleado)+1, 3, '0'));
-	END IF;
-end$$
-delimiter ;    
-
-/*----------------tabla cliente----------------*/
-create table tb_cliente (
-	id_clie char(5) not null,
-	dni_clie char(8) not null, 
-	nom_clie varchar(100) not null,
-	ape_clie varchar(100) not null,
-	fec_nac_clie timestamp not null default current_timestamp,
-    tel_clie char(9),
-    id_log char(5),
-    estado int not null
-);
-alter table tb_cliente 
-	add constraint PKclie primary key (id_clie),
-    add constraint FKclie_log foreign key (id_log) references tb_login (id_log),
-    add constraint CKclie_dni check (length(dni_clie)=8),
-    add constraint CKclie_dato check (length(nom_clie)>=2 and (length(ape_clie)>=2)),
-    add constraint CKclie_tel check (length(tel_clie)=9),
-    add constraint CKclie_est check (estado in (1, 2)),
-	alter estado set default 1;
-DELIMITER $$
-CREATE TRIGGER tg_insertar_idcliente
-BEFORE INSERT ON tb_cliente 
-FOR EACH ROW
-BEGIN
-    IF (SELECT COUNT(*) FROM tb_cliente)=0   THEN
-        SET NEW.id_clie= 'cl001';
-    ELSE
-        SET NEW.id_clie= CONCAT('lg', LPAD((SELECT COUNT(*) FROM tb_cliente)+1, 3, '0'));
-	END IF;
-END$$
-DELIMITER ;
-
 /*---------------- tabla registro ----------------*/
 create table tb_registro (
 	id_regis char(5) not null,
 	id_categ int not null,
-	id_clie char(5) not null,
+	id_usua char(5) not null,
 	descrip_prod varchar(100) not null,
 	observacion varchar(256),
 	fecha_regis timestamp not null default current_timestamp,
@@ -247,7 +187,7 @@ create table tb_registro (
 alter table  tb_registro 
 	add constraint PKregistro primary key(id_regis),
     add constraint FKregis_categ foreign key (id_categ) references tb_categoria(id_categ),
-    add constraint FKregis_clie foreign key (id_clie) references tb_cliente(id_clie),
+    add constraint FKregis_usua foreign key (id_usua) references tb_usuario(id_usua),
     add constraint CKregis_prod check (length(descrip_prod)>=10 and length(observacion)>=10),
     add constraint CKregis_prec check (precio>=5.0),
     add constraint CKregis_stock check (stock>=0 and stock <=100),
@@ -317,7 +257,7 @@ DELIMITER ;
 /*----------------tabla boleta----------------*/
 create table tb_boleta (
 	num_bol char(8) not null,
-	id_log char(5) not null,
+	id_usua char(5) not null,
 	tipo_pago int not null,
     descrip_pago varchar(30) not null,
     id_direc char(5) not null,
@@ -328,7 +268,7 @@ create table tb_boleta (
 );
 alter table tb_boleta
 	add constraint PKbol primary key (num_bol),
-    add constraint FKbol_log foreign key (id_log) references tb_login(id_log),
+    add constraint FKbol_usua foreign key (id_usua) references tb_usua(id_usua),
     add constraint FKbol_direc foreign key (id_direc) references tb_direccion(id_direc),
     add constraint CKbol_impo check (impo_bol>=1.0),
     add constraint CKbol_envio check (envio>=1.0),
@@ -433,7 +373,7 @@ insert into tb_distrito values (null, 1, 'Surquillo');
 insert into tb_distrito values (null, 1, 'Villa El Salvador');     
 insert into tb_distrito values (null, 1, 'Villa María del Triunfo');            
 
-insert into tb_login(usuario, pass, email_log) values ('madel_12', '12345678', 'madeliyricra@gmail.com');
+/*insert into tb_login(usuario, pass, email_log) values ('madel_12', '12345678', 'madeliyricra@gmail.com');
 insert into tb_login(usuario, pass, email_log) values ('calax590', '321654987', 'luizito590@gmail.com');
 insert into tb_login(usuario, pass, email_log) values ('mknecroc12', '741852963', 'willymas123@gmail.com');
 insert into tb_login(usuario, pass, email_log) values ('maver78', '987523641', 'maverick78@gmail.com');
@@ -445,10 +385,12 @@ insert into tb_cliente values (null,'71234568', 'Maverick', 'Champi Romero', '19
 insert into tb_cliente values (null,'76428945', 'Juan', 'Rodriguez Suarez', '2002-04-23',  '987654321', null, 1);
 insert into tb_cliente values (null,'73248756', 'Roberto', 'Fernandez Ramirez', '2002-04-23', '987654321', null, 1);
 insert into tb_cliente values (null,'73200896', 'Alex', 'Quispe Cavero', '2002-04-23', '987654321', null, 1);
-
-insert into tb_rol values (null, 'técnico infomático', 1200, 2000);
-insert into tb_rol values (null, 'personal seguridad', 1200, 1800);
-insert into tb_rol values (null, 'personal delivery', 930, 1200);
+*/
+insert into tb_rol values (null, 'técnico infomático');
+insert into tb_rol values (null, 'personal seguridad');
+insert into tb_rol values (null, 'personal delivery');
+insert into tb_rol values (null, 'cliente');
+insert into tb_rol values (null, 'proveedor');
 
 /*----------------------LAPTOPS-------------------------*/
 insert into tb_registro values (null, 1, 'cl001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);

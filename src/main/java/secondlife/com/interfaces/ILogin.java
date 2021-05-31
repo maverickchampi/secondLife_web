@@ -1,7 +1,10 @@
 package secondlife.com.interfaces;
 
-import secondlife.com.model.Login;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ILogin {
+import secondlife.com.model.Login;
+import secondlife.com.model.Producto;
+
+public interface ILogin extends JpaRepository<Producto, String>{
 	public int validar(Login l);
 }

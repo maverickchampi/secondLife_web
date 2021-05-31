@@ -22,7 +22,6 @@ public class Producto {
 	private double calidad;
 	private int estado;
 	
-	
 	public String getId_prod() {
 		return id_prod;
 	}

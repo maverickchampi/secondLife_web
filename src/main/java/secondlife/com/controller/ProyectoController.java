@@ -1,10 +1,19 @@
 package secondlife.com.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import secondlife.com.interfaces.IProducto;
 
 @Controller
 public class ProyectoController {
+	/*-------------------------*/
+	@Autowired
+	private IProducto prod;
+		
+	/*-------------------------*/
 	@GetMapping("/index")
 	public String index() {
 		return "index";
@@ -26,7 +35,8 @@ public class ProyectoController {
 	}
 
 	@GetMapping("/producto")
-	public String producto() {
+	public String producto(Model model) {
+		model.addAttribute("lstProducto", prod.findAll());
 		return "producto";
 	}
 	

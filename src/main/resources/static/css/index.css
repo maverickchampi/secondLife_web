@@ -70,14 +70,7 @@
 .itemside .aside2 {
   width: 80px;
 }
-.img-wrap {
-  text-align: center;
-}
-.card-product {
-  width: 100%;
-  height: 328px;
-  object-fit: contain;
-}
+
 .container-img-detail {
   align-items: center;
   display: flex;
@@ -87,9 +80,7 @@
   justify-content: center;
   align-items: center;
 }
-.card-product-detail {
-  width: 50%;
-}
+
 .description {
   padding: 20px;
 }
@@ -98,16 +89,6 @@
 }
 .col-md-3 {
   margin-bottom: 20px;
-}
-.card-product-grid:hover {
-  box-shadow: 0 4px 15px rgb(153 153 153 / 30%);
-  transition: 0.3s;
-}
-.card figcaption {
-  padding: 15px;
-}
-.price-wrap {
-  margin-bottom: 10px;
 }
 .banner-principal {
   height: calc(100vh - 206px);
@@ -189,11 +170,15 @@ a:hover {
     width: 100%;
   }
 }
-
+.info-text{
+  font-weight: bolder;
+  font-size: 11px;
+  color: dimgrey;
+  text-transform: uppercase;
+}
 .price {
   display: block;
 }
-
 .back-color-primary {
   background-color: #011936;
   padding: 20px 0;
@@ -272,12 +257,6 @@ a:hover {
     height: 250px;
   }
 }
-
-
-
-
-
-
 
 .file {
   visibility: hidden;

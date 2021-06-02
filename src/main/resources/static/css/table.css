@@ -1,0 +1,53 @@
+#producto .row tr {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+}
+#producto .row td {
+  background-color: transparent;
+}
+.sorting_1 {
+  background-color: transparent;
+  box-shadow: 0 1px 15px rgb(153 153 153 / 30%);
+  transition: 0.3s;
+  margin: 10px;
+}
+.sorting_1:hover {
+  background-color: transparent;
+}
+.sorting_asc{
+    display: none;
+}
+/*----------------------*/
+.dataTables_filter label input{
+  outline: none;
+}
+
+/*------producto-------*/
+.card-product-grid {
+  padding: 10px;
+  object-fit: contain;
+}
+.card-product-detail {
+  width: 50%;
+}
+
+.card figcaption {
+  padding: 15px;
+}
+.img-wrap {
+  text-align: center;
+  width: 90%;
+  height: 150px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.img-wrap img{
+    text-align: center;
+    width: auto;
+    height: 100%;
+}
+.price-wrap {
+  margin-bottom: 10px;
+}

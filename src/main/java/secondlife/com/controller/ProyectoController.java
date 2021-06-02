@@ -35,13 +35,19 @@ public class ProyectoController {
 	}
 	
 	@GetMapping("/productos")
-	public String productos() {
+	public String productos(Model model) {
+		model.addAttribute("lstProducto", prod.findAll());
+		model.addAttribute("cantidad", prod.findAll().size()+" productos encontrados");
 		return "productos";
 	}
 
 	@GetMapping("/producto")
 	public String producto(Model model) {
+<<<<<<< HEAD
+		
+=======
 		model.addAttribute("lstProducto", ip.findAll());
+>>>>>>> 826b121bad4b9cddf9ed74f6e01c4a1d649c1dfc
 		return "producto";
 	}
 	

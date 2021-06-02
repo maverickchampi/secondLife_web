@@ -55,21 +55,11 @@ public class ProyectoController {
 
 	@PostMapping("/registrar")
 	public String registrarPost(Usuario u, Model model) {	
-		Usuario usu = new Usuario();
-		usu.setId_usua("");
-		usu.setDni_usua("88888888");
-		usu.setId_rol(4);
-		usu.setNom_usua("aaaaaaaa");
-		usu.setApe_usua("dddddddd");
-		usu.setTel_usua("555555555");
-		usu.setFec_nac_usua("2020-05-05");
-		usu.setUsuario("aaaaaajj");
-		usu.setPass("aaaaaaajj");
-		usu.setEmail_log("ssss6@gmail.com");
-		usu.setEstado(1);
-		System.out.println(u);
-		System.out.println(usu);
-		iu.save(usu);
+		u.setId_usua("");
+		u.setFec_nac_usua("2020-05-05");
+		u.setEstado(1);
+		u.setId_rol(4);
+		iu.save(u);
 		return "registrar";
 	}
 	

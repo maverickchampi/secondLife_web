@@ -36,13 +36,13 @@ create table tb_usuario (
 	id_rol int not null,
 	nom_usua  varchar(100) not null,
 	ape_usua varchar(100) not null,
-	tel_usua char(9) not null,
+	tel_usua char(9),
 	fec_nac_usua timestamp not null,
     
 	usuario varchar(15) not null, 
 	pass varchar(15) not null,  
 	email_log varchar(100) not null,
-    estado int not null
+    estado int 
 );
 alter table tb_usuario
 	add constraint PKusua primary key (id_usua),
@@ -536,6 +536,8 @@ insert into tb_producto values (null, '993254-004', 3, 'Samsung', 'Galaxy A71 Ne
 
 
 /*
+use bd_servicio_venta;
+select*from tb_usuario;
 select*from tb_boleta;
 select*from tb_categoria;
 select*from tb_cliente;

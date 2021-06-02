@@ -69,42 +69,42 @@
 				<header class="mb-4">
 					<h4 class="card-title">Inscribirse</h4>
 				</header>
-				<form>
+				<form th:object="${Usuario}" method="post" th:action="@{/registrar}">
 					<div class="form-row">
 						<div class="col form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" placeholder="">
+							<input type="text" class="form-control" placeholder="" th:field="*{nom_usua}">
 						</div> 
 						<div class="col form-group">
 							<label>Apellido</label>
-							<input type="text" class="form-control" placeholder="">
+							<input type="text" class="form-control" placeholder="" th:field="*{ape_usua}">
 						</div> 
 					</div>
 					<div class="form-row">
 						<div class="col form-group">
 							<label>DNI</label>
-							<input type="number" class="form-control" placeholder="">
+							<input type="number" class="form-control" placeholder="" th:field="*{dni_usua}">
 						</div> 
 						<div class="col form-group">
 							<label>Fecha de nacimiento</label>
-							<input type="date" class="form-control" placeholder="">
+							<input type="date" class="form-control" placeholder="" th:field="*{fec_nac_usua}">
 						</div> 
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" placeholder="">
+						<input type="email" class="form-control" placeholder="" th:field="*{email_log}">
 						<small class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
 					</div> 
 					<div class="form-row">
 						<div class="col form-group">
 							<label>Usuario</label>
-							<input type="text" class="form-control" placeholder="">
+							<input type="text" class="form-control" placeholder="" th:field="*{usuario}">
 						</div> 
 					</div>
 					<div class="form-row">
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-6" >
 							<label>Crear contraseña</label>
-							<input class="form-control" type="password">
+							<input class="form-control" type="password" th:field="*{pass}">
 						</div> 
 						<div class="form-group col-md-6">
 							<label>Repetir contraseña</label>

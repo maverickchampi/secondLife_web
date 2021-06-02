@@ -4,14 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import secondlife.com.interfaces.IProducto;
+import secondlife.com.interfaces.IUsuario;
+import secondlife.com.model.Usuario;
 
 @Controller
 public class ProyectoController {
 	/*-------------------------*/
 	@Autowired
-	private IProducto prod;
+	private IProducto ip;
+	private IUsuario iu;
 		
 	/*-------------------------*/
 	@GetMapping("/index")
@@ -38,12 +42,22 @@ public class ProyectoController {
 
 	@GetMapping("/producto")
 	public String producto(Model model) {
+<<<<<<< HEAD
 		
+=======
+		model.addAttribute("lstProducto", ip.findAll());
+>>>>>>> 826b121bad4b9cddf9ed74f6e01c4a1d649c1dfc
 		return "producto";
 	}
 	
 	@GetMapping("/registrar")
-	public String registrar() {
+	public String registrar1(Usuario u, Model model) {
+		return "registrar";
+	}
+
+	@PostMapping("/registrar")
+	public String registrar(Usuario u, Model model) {
+		iu.save(u);
 		return "registrar";
 	}
 	

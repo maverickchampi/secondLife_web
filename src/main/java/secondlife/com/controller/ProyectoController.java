@@ -14,7 +14,7 @@ import secondlife.com.model.Usuario;
 public class ProyectoController {
 	/*-------------------------*/
 	@Autowired
-	private IProducto ip;
+	private IProducto prod;
 	private IUsuario iu;
 		
 	/*-------------------------*/
@@ -42,16 +42,12 @@ public class ProyectoController {
 
 	@GetMapping("/producto")
 	public String producto(Model model) {
-<<<<<<< HEAD
-		
-=======
-		model.addAttribute("lstProducto", ip.findAll());
->>>>>>> 826b121bad4b9cddf9ed74f6e01c4a1d649c1dfc
+		model.addAttribute("lstProducto", prod.findAll());
 		return "producto";
 	}
 	
 	@GetMapping("/registrar")
-	public String registrar1(Usuario u, Model model) {
+	public String registrar1() {
 		return "registrar";
 	}
 

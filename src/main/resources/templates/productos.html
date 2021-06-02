@@ -6,7 +6,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"> -->
+	<link rel="stylesheet"  type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/table.css">
+
 </head>
 
 <body>
@@ -71,344 +75,159 @@
 		</section> <!-- header-main .// -->
 	</header> <!-- section-header.// -->
 
-	<!-- ========================= SECTION PAGETOP ========================= -->
-	<section class="section-pagetop bg padding-45">
-		<div class="container">
-			<h2 class="title-page">Productos</h2>
-			<nav>
-				<ol class="breadcrumb text-white">
-					<li class="breadcrumb-item"><a href="index">Inicio</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Productos</li>
-				</ol>
-			</nav>
-		</div> <!-- container //  -->
-	</section>
-	<!-- ========================= SECTION INTRO END// ========================= -->
-
-	<!-- ========================= SECTION CONTENT ========================= -->
-	<section class="section-content padding-y">
-		<div class="container">
-
-			<div class="row">
-				<aside class="col-12 col-md-12 col-sm-12 col-lg-3">
-
-					<div class="card">
-						<article class="filter-group">
-							<header class="card-header">
-								<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true"
-									class="">
-									<i class="icon-control fa fa-chevron-down"></i>
-									<h6 class="title">Productos</h6>
-								</a>
-							</header>
-							<div class="filter-content collapse show" id="collapse_1" >
-								<div class="card-body">
-									<form class="pb-3">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Buscar...">
-											<div class="input-group-append">
-												<button class="btn btn-light" type="button"><i
-														class="fa fa-search"></i></button>
+	<main class="container-fluid">
+		<!-- ========================= SECTION PAGETOP ========================= -->
+		<section class="section-pagetop bg padding-20">
+			<div class="container">
+				<h2 class="title-page">Productos</h2>
+				<nav>
+					<ol class="breadcrumb text-white">
+						<li class="breadcrumb-item"><a href="index">Inicio</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Productos</li>
+					</ol>
+				</nav>
+			</div> <!-- container //  -->
+		</section>
+		<!-- ========================= SECTION INTRO END// ========================= -->
+		
+		<!-- ========================= SECTION CONTENT ========================= -->
+		<section class="section-content">
+			<div class="container">
+		
+				<div class="row">
+					<aside class="col-12 col-md-12 col-sm-12 col-lg-3">
+		
+						<div class="card">
+							<article class="filter-group">
+								<header class="card-header">
+									<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">				
+										<h6 class="title"><i class="icon-control fa fa-chevron-down"></i>Productos</h6>
+									</a>
+								</header>
+								<div class="filter-content collapse show" id="collapse_1">
+									<div class="card-body">
+										<form class="pb-3">
+											<div class="input-group">
+												<input type="text" class="form-control" placeholder="Buscar...">
+												<div class="input-group-append">
+													<button class="btn btn-light" type="button"><i
+															class="fa fa-search"></i></button>
+												</div>
 											</div>
-										</div>
-									</form>
+										</form>
+		
+										<ul class="list-menu">
+											<li><a href="#">Laptops </a></li>
+											<li><a href="#">Impresoras </a></li>
+											<li><a href="#">Celulares </a></li>
+											<li><a href="#">Cámaras </a></li>
+											<li><a href="#">Wearables </a></li>
+											<li><a href="#">TV's</a></li>
+											<li><a href="#">Audio </a></li>
+										</ul>
+		
+									</div> <!-- card-body.// -->
+								</div>
+							</article> <!-- filter-group  .// -->
 
-									<ul class="list-menu">
-										<li><a href="#">Laptops </a></li>
-										<li><a href="#">Impresoras </a></li>
-										<li><a href="#">Celulares </a></li>
-										<li><a href="#">Cámaras </a></li>
-										<li><a href="#">Wearables </a></li>
-										<li><a href="#">TV's</a></li>
-										<li><a href="#">Audio </a></li>
-									</ul>
-
-								</div> <!-- card-body.// -->
+							<article class="filter-group">
+								<header class="card-header">
+									<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">								
+										<h6 class="title"><i class="icon-control fa fa-chevron-down"></i> Marcas </h6>
+									</a>
+								</header>
+								<div class="filter-content collapse show" id="collapse_2">
+									<div class="card-body">
+										<label class="custom-control custom-checkbox">
+											<input type="checkbox" checked="" class="custom-control-input">
+											<div class="custom-control-label">Xiaomi
+												<b class="badge badge-pill badge-light float-right">120</b>
+											</div>
+										</label>
+										<label class="custom-control custom-checkbox">
+											<input type="checkbox" checked="" class="custom-control-input">
+											<div class="custom-control-label">Apple
+												<b class="badge badge-pill badge-light float-right">15</b>
+											</div>
+										</label>
+										<label class="custom-control custom-checkbox">
+											<input type="checkbox" checked="" class="custom-control-input">
+											<div class="custom-control-label">Samsung
+												<b class="badge badge-pill badge-light float-right">75</b>
+											</div>
+										</label>
+										<label class="custom-control custom-checkbox">
+											<input type="checkbox" checked="" class="custom-control-input">
+											<div class="custom-control-label">Huawei
+												<b class="badge badge-pill badge-light float-right">89</b>
+											</div>
+										</label>
+										<label class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input">
+											<div class="custom-control-label">Motorola
+												<b class="badge badge-pill badge-light float-right">30</b>
+											</div>
+										</label>
+									</div> <!-- card-body.// -->
+								</div>
+							</article> <!-- filter-group .// -->
+						</div> <!-- card.// -->
+		
+					</aside> <!-- col.// -->
+					<main class="col-12 col-md-12 col-sm-12 col-lg-9">
+		
+						<header class="border-bottom mb-4 pb-2">
+							<div class="form-inline">
+								<span class="mr-md-auto" th:text="${cantidad}"></span>							
+								<!-- <div class="btn-group">
+									<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view">
+										<i class="fa fa-bars"></i></a>
+									<a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip"
+										title="Grid view">
+										<i class="fa fa-th"></i></a>
+								</div> -->
 							</div>
-						</article> <!-- filter-group  .// -->
-						<article class="filter-group">
-							<header class="card-header">
-								<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true"
-									class="">
-									<i class="icon-control fa fa-chevron-down"></i>
-									<h6 class="title">Marcas </h6>
-								</a>
-							</header>
-							<div class="filter-content collapse show" id="collapse_2" >
-								<div class="card-body">
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Xiaomi
-											<b class="badge badge-pill badge-light float-right">120</b> </div>
-									</label>
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Apple
-											<b class="badge badge-pill badge-light float-right">15</b> </div>
-									</label>
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Samsung
-											<b class="badge badge-pill badge-light float-right">75</b> </div>
-									</label>
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Huawei
-											<b class="badge badge-pill badge-light float-right">89</b> </div>
-									</label>
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input">
-										<div class="custom-control-label">Motorola
-											<b class="badge badge-pill badge-light float-right">30</b> </div>
-									</label>
-								</div> <!-- card-body.// -->
-							</div>
-						</article> <!-- filter-group .// -->
-						<article class="filter-group">
-							<header class="card-header">
-								<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true"
-									class="">
-									<i class="icon-control fa fa-chevron-down"></i>
-									<h6 class="title">Rango de precios</h6>
-								</a>
-							</header>
-							<div class="filter-content collapse show" id="collapse_3" >
-								<div class="card-body">
-									<input type="range" class="custom-range" min="0" max="100" name="">
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label>Min</label>
-											<input class="form-control" placeholder="S/0" type="number">
-										</div>
-										<div class="form-group text-right col-md-6">
-											<label>Max</label>
-											<input class="form-control" placeholder="S/10,000" type="number">
-										</div>
-									</div> <!-- form-row.// -->
-									<button class="btn btn-block btn-primary">Aplicar</button>
-								</div><!-- card-body.// -->
-							</div>
-						</article> <!-- filter-group .// -->
-
-						<article class="filter-group">
-							<header class="card-header">
-								<a href="#" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false"
-									class="">
-									<i class="icon-control fa fa-chevron-down"></i>
-									<h6 class="title"> Más filtros </h6>
-								</a>
-							</header>
-							<div class="filter-content collapse in" id="collapse_5" >
-								<div class="card-body">
-
-									<label class="custom-control custom-radio">
-										<input type="radio" name="myfilter_radio" class="custom-control-input">
-										<div class="custom-control-label">Recién estrenados </div>
-									</label>
-
-									<label class="custom-control custom-radio">
-										<input type="radio" name="myfilter_radio" class="custom-control-input">
-										<div class="custom-control-label">Más valorados</div>
-									</label>
-
-									<label class="custom-control custom-radio">
-										<input type="radio" name="myfilter_radio" class="custom-control-input">
-										<div class="custom-control-label">Muy baratos</div>
-									</label>
-								</div><!-- card-body.// -->
-							</div>
-						</article> <!-- filter-group .// -->
-					</div> <!-- card.// -->
-
-				</aside> <!-- col.// -->
-				<main class="col-12 col-md-12 col-sm-12 col-lg-9">
-
-					<header class="border-bottom mb-4 pb-3">
-						<div class="form-inline">
-							<span class="mr-md-auto">32 Productos encontrados </span>
-							<select class="mr-2 form-control">
-								<option>Últimos productos</option>
-								<option>Tendencia</option>
-								<option>Más popular</option>
-								<option>Más barato</option>
-							</select>
-							<div class="btn-group">
-								<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view">
-									<i class="fa fa-bars"></i></a>
-								<a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip"
-									title="Grid view">
-									<i class="fa fa-th"></i></a>
-							</div>
-						</div>
-					</header><!-- sect-heading -->
-
-					<div class="row">
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Great item name goes here</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap">
-									<img class="card-product"
-										src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height">
-										<a href="#" class="title">Product name goes here just for demo item</a>
-										<div class="price-wrap mt-2">
-											<span class="price">$1280</span>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-					</div> <!-- row end.// -->
-
-
-					<nav class="mt-4" aria-label="Page navigation sample">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-						</ul>
-					</nav>
-
-				</main> <!-- col.// -->
-
-			</div>
-
-		</div> <!-- container .//  -->
-	</section>
+						</header><!-- sect-heading-->
+		 
+						<table id="producto" class="display" width="100%">
+							<thead>
+								<tr>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody class="row">
+								<tr class="col-12 col-md-6 col-lg-4" th:each="p:${lstProducto}">
+									<td class="card card-product-grid">
+										<div class="img-wrap">
+											<img th:src="${p.image}">
+										</div> <!-- img-wrap.// -->
+										<figcaption class="info-wrap">
+											<div class="fix-height">
+												<p class="m-0 info-text" th:text="${p.mar_prod}"></p>
+												<a href="#" class="title" th:text="${p.mod_prod}"></a>
+												<div class="price-wrap mt-2">
+													<span class="price" th:text="${p.precio}"></span>
+												</div> <!-- price-wrap.// -->
+											</div>
+											<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
+										</figcaption>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+		
+					</main> <!-- col.// -->
+		
+				</div>
+		
+			</div> <!-- container .//  -->
+		
+		</section>
+	</main>
 	<!-- ========================= SECTION CONTENT END// ========================= -->
 
 	<!-- ========================= FOOTER ========================= -->
-	<footer class="section-footer border-top back-color-primary absolute-bottom">
+	<footer class="section-footer border-top back-color-primary">
         <div class="container">
             <p class="float-md-right">
                 &copy Copyright 2021 Todos los derechos reservados
@@ -420,7 +239,6 @@
     </footer>
 	<!-- ========================= FOOTER END // ========================= -->
 
-
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -428,4 +246,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+	<script src="js/index.js"></script>	
 </body>
+</html>

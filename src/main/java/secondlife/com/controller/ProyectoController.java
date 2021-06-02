@@ -15,6 +15,7 @@ public class ProyectoController {
 	/*-------------------------*/
 	@Autowired
 	private IProducto ip;
+	@Autowired 
 	private IUsuario iu;
 		
 	/*-------------------------*/
@@ -45,13 +46,25 @@ public class ProyectoController {
 	}
 	
 	@GetMapping("/registrar")
-	public String registrar1(Usuario u, Model model) {
+	public String registrar() {
 		return "registrar";
 	}
 
 	@PostMapping("/registrar")
-	public String registrar(Usuario u, Model model) {
-		iu.save(u);
+	public String registrarPost(Usuario u, Model model) {	
+		Usuario usu = new Usuario();
+		usu.setDni_usua("88888888");
+		usu.setId_rol(4);
+		usu.setNom_usua("aaaaaaaa");
+		usu.setApe_usua("dddddddd");
+		usu.setTel_usua("555555555");
+		usu.setFec_nac_usua("2020-05-05");
+		usu.setUsuario("aaaaaa");
+		usu.setPass("aaaaaaa");
+		usu.setEmail_log("ssss6@gmail.com");
+		usu.setEstado(0);
+		System.out.println(u);
+		System.out.println(usu);
 		return "registrar";
 	}
 	

@@ -1,5 +1,7 @@
 package secondlife.com.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,7 +16,7 @@ public class Usuario {
 	private String nom_usua;
 	private String ape_usua ;
 	private String tel_usua;
-	private String fec_nac_usua;
+	private Date fec_nac_usua;
     
 	private String usuario;
 	private String pass;  
@@ -57,10 +59,10 @@ public class Usuario {
 	public void setTel_usua(String tel_usua) {
 		this.tel_usua = tel_usua;
 	}
-	public String getFec_nac_usua() {
+	public Date getFec_nac_usua() {
 		return fec_nac_usua;
 	}
-	public void setFec_nac_usua(String fec_nac_usua) {
+	public void setFec_nac_usua(Date fec_nac_usua) {
 		this.fec_nac_usua = fec_nac_usua;
 	}
 	public String getUsuario() {

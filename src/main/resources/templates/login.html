@@ -66,25 +66,25 @@
 		<div class="card mx-auto">
 			<div class="card-body">
 				<h4 class="card-title mb-4">Iniciar Sesión</h4>
-				<form>
+				<form method="post" th:action="@{/login}">
 					<a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp Ingresar
 						con Facebook</a>
 					<a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp Ingresar con
 						Google</a>
 					<div class="form-group">
-						<input name="" class="form-control" placeholder="Usuario" type="text">
+						<input class="form-control" placeholder="Usuario" type="text" name="usuario">
 					</div> <!-- form-group// -->
 					<div class="form-group">
-						<input name="" class="form-control" placeholder="Contraseña" type="password">
+						<input class="form-control" placeholder="Contraseña" type="password" name="pass">
 					</div> <!-- form-group// -->
 	
 					<div class="form-group">
 						<a href="#" class="float-right">¿Olvidaste tu contraseña?</a>
-						<label class="float-left custom-control custom-checkbox"> <input type="checkbox"
+						<!-- <label class="float-left custom-control custom-checkbox"> <input type="checkbox"
 								class="custom-control-input" checked="">
 							<div class="custom-control-label"> Recuérdame </div>
 						</label>
-					</div> <!-- form-group form-check .// -->
+					</div>  // -->
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block"> Ingresar </button>
 					</div> <!-- form-group// -->
@@ -92,7 +92,7 @@
 			</div> <!-- card-body.// -->
 		</div> <!-- card .// -->
 	
-		<p class="text-center mt-4">¿No tienes una cuenta? <a href="registro" class="">Regístrate</a></p>
+		<p class="text-center mt-4">¿No tienes una cuenta? <a href="registrar" class="">Regístrate</a></p>
 		<br><br>
 	</section>
 	

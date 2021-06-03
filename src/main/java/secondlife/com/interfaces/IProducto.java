@@ -6,5 +6,4 @@ import secondlife.com.model.Producto;
 
 
 public interface IProducto extends JpaRepository<Producto, String>{
-
 }

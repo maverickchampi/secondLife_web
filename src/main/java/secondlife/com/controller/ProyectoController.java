@@ -1,11 +1,11 @@
 package secondlife.com.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import secondlife.com.interfaces.ILogin;
 import secondlife.com.interfaces.IProducto;
 import secondlife.com.interfaces.IUsuario;
 import secondlife.com.model.Usuario;
@@ -18,7 +18,9 @@ public class ProyectoController {
 
 	@Autowired 
 	private IUsuario iu;
-		
+	
+	@Autowired 
+	private ILogin il;
 	/*-------------------------*/
 	@GetMapping("/index")
 	public String index() {
@@ -54,9 +56,8 @@ public class ProyectoController {
 	}
 
 	@PostMapping("/registrar")
-	public String registrarPost(Usuario u, Model model) {	
+	public String registrarPost(Usuario u, Model model) {
 		u.setId_usua("");
-		u.setFec_nac_usua("2020-05-05");
 		u.setEstado(1);
 		u.setId_rol(4);
 		iu.save(u);
@@ -65,6 +66,14 @@ public class ProyectoController {
 	
 	@GetMapping("/login")
 	public String login() {
+		return "login";
+	}
+	
+	@PostMapping("/login")
+	public String loginPost(Usuario u, Model model) {
+		int ok = il.validar(u);
+		System.out.println(u.getUsuario());
+		System.out.println(u.getPass());
 		return "login";
 	}
 	

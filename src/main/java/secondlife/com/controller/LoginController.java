@@ -49,4 +49,9 @@ public class LoginController {
 	public String cotizar() {
 		return "cotizar";
 	}
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin";
+	}
 }

@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/", "/bcrypt/**", "/css/**", "/js/**", "/img/**", "/index**", "/terminos**", "/carrito**",
+				.antMatchers("/", "/bcrypt/**", "/css/**", "/js/**", "/img/**", "/index**", "/terminos**", "/carrito**","/admin**",
 						"/productos**", "/producto**","/registrar**","/productos/{id}**","/producto/{id}**")
 				.permitAll() // TODO LO PERMITIDO SIN LOGUEAR
 				// ACA VAN LOS ROLES Y LOS PERMISOS DE USUARIO

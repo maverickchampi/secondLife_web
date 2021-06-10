@@ -83,4 +83,8 @@ public class ProyectoController {
 	public String cotizar() {
 		return "cotizar";
 	}
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin";
+	}
 }

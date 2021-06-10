@@ -6,18 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+//@Getter
+//@Setter
+//@ToString
 @Entity
 @Table(name="tb_usuario")
 public class Usuario {
 	@Id
 	private String id_usua; 
-	private String dni_usua ;
+	private String dni_usua;
 	private int id_rol;
 	private String nom_usua;
-	private String ape_usua ;
+	private String ape_usua;
 	private String tel_usua;
 	private Date fec_nac_usua;
-    
 	private String usuario;
 	private String pass;  
 	private String email_log;
@@ -89,5 +92,6 @@ public class Usuario {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-
+	
+	
 }

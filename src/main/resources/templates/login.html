@@ -1,65 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Second Life</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="css/login.css">
-</head>
+
+<head th:replace="layout/layout::head"></head>
 
 <body>
-	<header class="section-header">
-
-		<nav class="navbar navbar-dark navbar-expand p-0 back-color-third">
-			<div class="container ">
-				<ul class="navbar-nav d-none d-md-flex mr-auto">
-				</ul>
-				<ul class="navbar-nav">
-					<li class="nav-item"><a href="#" class="nav-link color-primary"> Llamar: +51 987654321 </a></li>
-					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle color-primary" data-toggle="dropdown"> Español </a>
-						<!-- <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
-				<li><a class="dropdown-item" href="#"></a></li>
-		    </ul> -->
-					</li>
-				</ul> <!-- list-inline //  -->
-			</div> <!-- navbar-collapse .// -->
-			</div> <!-- container //  -->
-		</nav> <!-- header-top-light.// -->
-
-		<section class="header-main border-bottom back-color-primary">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-2 col-4 col-sm-4 col-md-6">
-						<a href="index" class="brand-wrap">
-							<img class="logo" src="https://i.ibb.co/NCTjMms/logo-icon.png" width="100">
-						</a> 
-					</div>					 
-					<div class="nav">
-						<div class="nav__account">
-							<div class="nav__account-car">
-								<a href="carrito" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
-								<span class="nro-products" id="nro-products">0</span>
-							</div>
-							<div class="nav__account-login">
-								<a href="perfil" class="nav__link"><i class="fa fa-user"></i></a>
-								<div class="text">
-									<span class=" color-third">Bienvenido!</span>
-									<div>
-										<a href="login" class="link">Ingresar</a> <span class=" color-third">| </span>
-										<a href="registrar" class="link"> Registrar</a>
-									</div>
-								</div>
-							</div>
-						</div> <!-- widgets-wrap.// -->
-					</div> <!-- col.// -->
-				</div> <!-- row.// -->
-			</div> <!-- container.// -->
-		</section> <!-- header-main .// -->
-	</header> <!-- section-header.// -->
+	
+	<header th:replace="layout/layout::header"></header>
 
 	<!-- ============================ COMPONENT REGISTER   ================================= -->
 	<section class="section-content padding-y">
@@ -72,20 +19,13 @@
 					<a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp Ingresar con
 						Google</a>
 					<div class="form-group">
-						<input class="form-control" placeholder="Usuario" type="text" name="usuario">
+						<input class="form-control" placeholder="Usuario" type="text" name="username">
 					</div> <!-- form-group// -->
 					<div class="form-group">
-						<input class="form-control" placeholder="Contraseña" type="password" name="pass">
+						<input class="form-control" placeholder="Contraseña" type="password" name="password">
 					</div> <!-- form-group// -->
 	
-					<div class="form-group">
-						<a href="#" class="float-right">¿Olvidaste tu contraseña?</a>
-						<!-- <label class="float-left custom-control custom-checkbox"> <input type="checkbox"
-								class="custom-control-input" checked="">
-							<div class="custom-control-label"> Recuérdame </div>
-						</label>
-					</div>  // -->
-					<div class="form-group">
+					
 						<button type="submit" class="btn btn-primary btn-block"> Ingresar </button>
 					</div> <!-- form-group// -->
 				</form>
@@ -96,28 +36,8 @@
 		<br><br>
 	</section>
 	
-	<!-- ========================= FOOTER ========================= -->
+	<footer th:replace="layout/layout::footer-2"></footer>
 
-	<footer class="section-footer border-top back-color-primary">
-        <div class="container">
-            <p class="float-md-right">
-                &copy Copyright 2021 Todos los derechos reservados
-            </p>
-            <p class="section-content-text">
-                <a href="terminos">Términos y condiciones</a>
-            </p>
-        </div><!-- //container -->
-    </footer>
-	<!-- ========================= FOOTER END // ========================= -->
-
-
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
 </body>
 
 </html>

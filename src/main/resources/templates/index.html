@@ -1,74 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Second Life</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/index.css">
-</head>
-<body>
-	<header class="section-header">
-		<nav class="navbar navbar-dark navbar-expand p-0 back-color-third">
-			<div class="container">
-				<ul class="navbar-nav d-none d-md-flex mr-auto">
-				</ul>
-				<ul class="navbar-nav">
-					<li class="nav-item"><a href="#" class="nav-link color-primary"> Llamar: +51 987654321 </a></li>
-					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle color-primary" data-toggle="dropdown"> Español </a>
-						<!-- <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
-				<li><a class="dropdown-item" href="#"></a></li>
-		    </ul> -->
-					</li>
-				</ul> <!-- list-inline //  -->
-			</div> <!-- navbar-collapse .// -->
-			</div> <!-- container //  -->
-		</nav> <!-- header-top-light.// -->
 
-		<section class="header-main border-bottom back-color-primary">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-2 col-6 col-sm-4">
-						<a href="index" class="brand-wrap">
-							<img class="logo" src="https://i.ibb.co/NCTjMms/logo-icon.png" width="100">
-						</a> <!-- brand-wrap.// -->
-					</div>
-					<div class="col-lg-6 col-12 col-sm-0 m-1 header__input-search">
-						<form action="#" class="search">
-							<div class="input-group w-100">
-								<input type="text" class="form-control" placeholder="Busca tu producto...">
-								<div class="input-group-append">
-									<button class="btn btn-primary" type="submit">
-										<i class="fa fa-search"></i>
-									</button>
-								</div>
-							</div>
-						</form> <!-- search-wrap .end// -->
-					</div> <!-- col.// -->
-					<div class="nav" > 
-						<div class="nav__account">
-							<div class="nav__account-car">
-								<a href="carrito" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
-								<span class="nro-products" id="nro-products">0</span>
-							</div>
-							<div class="nav__account-login">
-								<a href="perfil" class="nav__link"><i class="fa fa-user"></i></a>
-								<div class="text">
-									<span class=" color-third">Bienvenido!</span>
-									<div>
-										<a href="login" class="link">Ingresar</a> <span class=" color-third">| </span>
-										<a href="registrar" class="link"> Registrar</a>
-									</div>
-								</div>
-							</div>
-						</div> <!-- widgets-wrap.// -->
-					</div> <!-- col.// -->
-				</div> <!-- row.// -->
-			</div> <!-- container.// -->
-		</section> <!-- header-main .// -->
-	</header> <!-- section-header.// -->
+<head th:replace="layout/layout::head"></head>
+
+<body>
+
+	<header th:replace="layout/layout::header"></header>
 
 
 	<nav class="navbar navbar-main navbar-expand-lg border-bottom  navbar-light">
@@ -81,67 +19,62 @@
 			<div class="collapse navbar-collapse" id="main_nav">
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Laptops <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/1}">Laptops <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Laptops</a>
-							<a class="dropdown-item" href="#">Laptops Gamers</a>
-							<a class="dropdown-item" href="#">Accesorios</a>
+							<a class="dropdown-item" th:href="@{/productos/1}">Laptops</a>
+							<a class="dropdown-item" th:href="@{/productos/1}">Laptops Gamers</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Impresoras <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/2}">Impresoras <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Impresoras</a>
-							<a class="dropdown-item" href="#">Multifuncionales</a>
-							<a class="dropdown-item" href="#">Tintas</a>
+							<a class="dropdown-item" th:href="@{/productos/2}">Impresoras</a>
+							<a class="dropdown-item" th:href="@{/productos/2}">Multifuncionales</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Celulares <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/3}">Celulares <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Xiaomi</a>
-							<a class="dropdown-item" href="#">Apple</a>
-							<a class="dropdown-item" href="#">Samsung</a>
-							<a class="dropdown-item" href="#">Huawei</a>
+							<a class="dropdown-item" th:href="@{/productos/3}">Xiaomi</a>
+							<a class="dropdown-item" th:href="@{/productos/3}">Apple</a>
+							<a class="dropdown-item" th:href="@{/productos/3}">Samsung</a>
+							<a class="dropdown-item" th:href="@{/productos/3}">Huawei</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Cámaras <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/4}">Cámaras <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Cámaras Digitales</a>
-							<a class="dropdown-item" href="#">Cámaras Deportivas</a>
-							<a class="dropdown-item" href="#">Drones</a>
+							<a class="dropdown-item" th:href="@{/productos/4}">Cámaras Digitales</a>
+							<a class="dropdown-item" th:href="@{/productos/4}">Cámaras Deportivas</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Wearables <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/5}">Wearables <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Smarwatch</a>
-							<a class="dropdown-item" href="#">Gafas inteligentes</a>
-							<a class="dropdown-item" href="#">Bands</a>
+							<a class="dropdown-item" th:href="@{/productos/5}">Smarwatch</a>
+							<a class="dropdown-item" th:href="@{/productos/5}">Gafas inteligentes</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">TV's <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/6}">TV's <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Básicos</a>
-							<a class="dropdown-item" href="#">SmartTv</a>
-							<a class="dropdown-item" href="#">QLED</a>
+							<a class="dropdown-item" th:href="@{/productos/6}">Básicos</a>
+							<a class="dropdown-item" th:href="@{/productos/6}">SmartTv</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link pl-0" data-toggle="dropdown" href="#">Audio <i
+						<a class="nav-link pl-0" data-toggle="dropdown" th:href="@{/productos/7}">Audio <i
 								class="fas fa-chevron-down"></i></a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Audífonos</a>
-							<a class="dropdown-item" href="#">Parlantes</a>
-							<a class="dropdown-item" href="#">MP3</a>
+							<a class="dropdown-item" th:href="@{/productos/7}">Audífonos</a>
+							<a class="dropdown-item" th:href="@{/productos/7}">Parlantes</a>
+							<a class="dropdown-item" th:href="@{/productos/7}">MP3</a>
 						</div>
 					</li>
 				</ul>
@@ -222,142 +155,25 @@
 			</header><!-- sect-heading -->
 
 			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="col-lg-3 col-md-4 col-sm-6" th:each="p:${lstProducto}">
 					<figure class="card card-product-grid">
 						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
+							<img class="card-product" th:src="${p.image}">
 						</div> <!-- img-wrap.// -->
 						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
+							<div class="fix-height  box-link">
+								<p class="m-0 info-text" th:text="${p.mar_prod}"></p>
+								<a th:href="@{'/producto/' + ${p.prod}}" class="title"
+									th:text="${p.mod_prod}"></a>
 								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
+									<span class="price" th:text="${p.precio}"></span>
 								</div> <!-- price-wrap.// -->
 							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
+							<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
 						</figcaption>
 					</figure>
 				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div><!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<img class="card-product"
-								src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/9.jpg">
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title">Product name goes here just for demo item</a>
-								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Añadir al carrito</a>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
+
 			</div> <!-- row.// -->
 
 		</div><!-- container // -->
@@ -428,73 +244,7 @@
 	</section>
 	<!-- ========================= SECTION  END// ======================= -->
 
-	<!-- ========================= FOOTER ========================= -->
-	<footer class="section-footer border-top back-color-primary">
-		<div class="container">
-			<section class="footer-top padding-y">
-				<div class="row">
-					<aside class="col-md-spon col-6">
-						<h6 class="title">Auspiciadores</h6>
-						<ul class="list-unstyled">
-							<li> <a href="https://www.wwf.org.pe/">WWF</a></li>
-							<li> <a href="https://latam.pg.com/marcas-y-productos/">P&G</a></li>
-							<li> <a href="https://www.faber-castell.com.pe/">Faber Castell</a></li>
-							<li> <a href="https://www.alicorp.com.pe/pe/es/">Alicorp</a></li>
-							<li> <a href="https://www.viabcp.com/">BCP</a></li>
-							<li> <a href="https://www.tarjetacencosud.pe/">Cencosud</a></li>
-						</ul>
-					</aside>
-					<aside class="col-md col-6">
-						<h6 class="title">Navegación</h6>
-						<ul class="list-unstyled">
-							<li> <a href="index">Inicio</a></li>
-							<li> <a href="carrito">Carrito de compras</a></li>
-							<li> <a href="terminos">Términos y condiciones</a></li>
-						</ul>
-					</aside>
-					<aside class="col-md col-6">
-						<h6 class="title">Cuenta</h6>
-						<ul class="list-unstyled">
-							<li> <a href="#"> Iniciar sesión </a></li>
-							<li> <a href="#"> Registrarse </a></li>
-							<li> <a href="#"> Mi perfil </a></li>
-						</ul>
-					</aside>
-					<aside class="col-md-social">
-						<h6 class="title">Social</h6>
-						<ul class="list-unstyled">
-							<li><a href="https://www.facebook.com/"> <i class="fab fa-facebook"></i> Facebook </a></li>
-							<li><a href="https://twitter.com/?lang=es"> <i class="fab fa-twitter"></i> Twitter </a></li>
-							<li><a href="https://www.instagram.com/"> <i class="fab fa-instagram"></i> Instagram </a>
-							</li>
-							<li><a href="https://www.youtube.com/"> <i class="fab fa-youtube"></i> Youtube </a></li>
-						</ul>
-					</aside>
-				</div> <!-- row.// -->
-			</section> <!-- footer-top.// -->
-
-			<section class="footer-bottom border-top row">
-				<div class="col-6 col-md-6 text-md-left">
-					<p class="text-muted"> &copy 2021 Second Life </p>
-				</div>
-				<div class="col-6 col-md-6-pay text-md-right text-muted">
-					<i class="fab fa-lg fa-cc-visa"></i>
-					<i class="fab fa-lg fa-cc-paypal"></i>
-					<i class="fab fa-lg fa-cc-mastercard"></i>
-				</div>
-			</section>
-		</div><!-- //container -->
-	</footer>
-	<!-- ========================= FOOTER END // ========================= -->
-
-
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
+	<footer th:replace="layout/layout::footer-1"></footer>
 </body>
 
 </html>

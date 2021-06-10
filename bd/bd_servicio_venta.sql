@@ -40,7 +40,7 @@ create table tb_usuario (
 	fec_nac_usua timestamp not null,
     
 	usuario varchar(15) not null, 
-	pass varchar(15) not null,  
+	pass varchar(100) not null,  
 	email_log varchar(100) not null,
     estado int 
 );
@@ -394,7 +394,7 @@ insert into tb_rol values (null, 'personal delivery');
 insert into tb_rol values (null, 'cliente');
 insert into tb_rol values (null, 'proveedor');
 
-insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'alex7800', 'alexito02', 'alexelleon@gmail.com',1);
+insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'clientealex', '$2a$10$Wx/44JwiShgbvK16pezQDe4tyktF0kskmrgOoRd8tW7UcUh9sSFc6', 'alexelleon@gmail.com',1);
 
 /*----------------------LAPTOPS-------------------------*/
 insert into tb_registro values (null, 1, 'us001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);
@@ -534,7 +534,6 @@ insert into tb_producto values (null, '993254-004', 3, 'Samsung', 'Galaxy A71 Ne
 
 /*----------------------AUDIO-------------------------*/
 
-
 /*
 use bd_servicio_venta;
 select*from tb_usuario;
@@ -551,3 +550,15 @@ select*from tb_provincia;
 select*from tb_registro;
 select*from tb_rol;
 */
+
+create table users (
+	username varchar(50) primary key,
+    password varchar(50),
+    enabled tinyint(1)
+);
+
+create table authorities(
+	username varchar(50),
+    authority varchar(50)
+);
+select * from tb_usuario

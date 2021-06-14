@@ -1,16 +1,21 @@
 package secondlife.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="tb_producto")
 public class Producto {
 	@Id
-	private String id_prod;
+	@Column(name = "id_prod")
+	private String prod;
 	private String cod_prod;
-	private int id_categ;
+	@Column(name = "id_categ")
+	private int categ;
+	@NotEmpty
 	private String mar_prod;
 	private String mod_prod;	
 	private String descrip_prod;
@@ -22,11 +27,12 @@ public class Producto {
 	private double calidad;
 	private int estado;
 	
-	public String getId_prod() {
-		return id_prod;
+
+	public String getProd() {
+		return prod;
 	}
-	public void setId_prod(String id_prod) {
-		this.id_prod = id_prod;
+	public void setProd(String prod) {
+		this.prod = prod;
 	}
 	public String getCod_prod() {
 		return cod_prod;
@@ -34,11 +40,11 @@ public class Producto {
 	public void setCod_prod(String cod_prod) {
 		this.cod_prod = cod_prod;
 	}
-	public int getId_categ() {
-		return id_categ;
+	public int getCateg() {
+		return categ;
 	}
-	public void setId_categ(int id_categ) {
-		this.id_categ = id_categ;
+	public void setCateg(int categ) {
+		this.categ = categ;
 	}
 	public String getMar_prod() {
 		return mar_prod;

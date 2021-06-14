@@ -40,7 +40,7 @@ create table tb_usuario (
 	fec_nac_usua timestamp not null,
     
 	usuario varchar(15) not null, 
-	pass varchar(15) not null,  
+	pass varchar(100) not null,  
 	email_log varchar(100) not null,
     estado int 
 );
@@ -394,7 +394,7 @@ insert into tb_rol values (null, 'personal delivery');
 insert into tb_rol values (null, 'cliente');
 insert into tb_rol values (null, 'proveedor');
 
-insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'alex7800', 'alexito02', 'alexelleon@gmail.com',1);
+insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'clientealex', '$2a$10$Wx/44JwiShgbvK16pezQDe4tyktF0kskmrgOoRd8tW7UcUh9sSFc6', 'alexelleon@gmail.com',1);
 
 /*----------------------LAPTOPS-------------------------*/
 insert into tb_registro values (null, 1, 'us001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);
@@ -652,6 +652,7 @@ insert into tb_producto values (null, '260022-010', 6, 'SAMSUNG', 'QN50Q60AAGXPE
 
 /*----------------------AUDIO-------------------------*/
 
+<<<<<<< HEAD
 insert into tb_registro values (null, 1, 'us001', 'Es un AUDIFONO ...', 'El equipo muestra audio estatico', '2021-05-10', 1, 40.0, 'no imagen', 5.0, 1);                                    
 insert into tb_producto values (null, '840188-001', 7, 'ANTRYX', 'S. KLIPER 7.1 AGH-8000SR7', 'Audio: 7.1; Inalámbrico: No; Micrófono: Si; Control: No; Plegable: No; Cancelacion de ruido: No',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25',  1, 120.0, 'https://i.ibb.co/njjJLPR/Aud-fono-Antryx-S-KLIPER-7-1-AGH-8000-SR7.png', 7.0, 1);
@@ -691,7 +692,10 @@ insert into tb_producto values (null, '840188-009', 7, 'LOGITECH', 'Z407', 'Tota
 insert into tb_registro values (null, 1, 'us001', 'Es un PARLANTYE ...', 'El equipo muestra audio estatico', '2021-05-10', 1, 200.0, 'no imagen', 5.0, 1);                                    
 insert into tb_producto values (null, '840188-010', 7, 'LOGITECH', 'G560', 'Total de vatios de pico: 240 W; Total de vatios reales: 120 W; Versión de Bluetooth: 4.1; Confiable radio de acción de 25 metros con línea de visión directa; Entrada USB: 1; Toma de audífonos: 1',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25',  1, 600.0, 'https://i.ibb.co/pzbWbPt/G560.png', 7.0, 1);
-
+/*
+=======
+>>>>>>> 0657d7b097de42111844b53fe3f0cbd74ee94553
+*/
 /*
 use bd_servicio_venta;
 select*from tb_usuario;
@@ -708,3 +712,15 @@ select*from tb_provincia;
 select*from tb_registro;
 select*from tb_rol;
 */
+
+create table users (
+	username varchar(50) primary key,
+    password varchar(50),
+    enabled tinyint(1)
+);
+
+create table authorities(
+	username varchar(50),
+    authority varchar(50)
+);
+select * from tb_usuario

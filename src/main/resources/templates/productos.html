@@ -120,6 +120,7 @@
 							</thead>
 							<tbody class="row">
 								<tr class="col-12 col-md-6 col-lg-4" th:each="p:${lstProducto}">
+								 <form method="post" th:action="@{/productos}">
 									<td class="card card-product-grid">
 										<div class="img-wrap">
 											<img th:src="${p.image}">
@@ -132,9 +133,11 @@
 													<span class="price" th:text="${p.precio}"></span>
 												</div> <!-- price-wrap.// -->
 											</div>
-											<a href="#" class="btn btn-block btn-primary">Añadir al carrito </a>
+											<input style="display: none;" th:value="${p.prod}" name="probBole"/>
+											<button class="btn btn-block btn-primary">Añadir al carrito </button>
 										</figcaption>
 									</td>
+								 </form>
 								</tr>
 							</tbody>
 						</table>

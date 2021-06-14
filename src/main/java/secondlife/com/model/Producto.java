@@ -27,7 +27,8 @@ public class Producto {
 	private double calidad;
 	private int estado;
 	
-
+	
+	
 	public String getProd() {
 		return prod;
 	}

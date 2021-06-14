@@ -44,20 +44,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		.dataSource(dataSource)
 		.passwordEncoder(passwordEncoder)
 		.usersByUsernameQuery("select usuario,pass,estado from tb_usuario where usuario = ?") // 
-		.authoritiesByUsernameQuery("select u.usuario,r.nom_rol from tb_rol r inner join tb_usuario u on (r.id_rol=u.id_rol) where u.usuario = ?");
 		
-		
-		// DATOS POR DEFAULT PARA INICIAR SESION OMITIDO
-/*
-		PasswordEncoder enconder = passwordEncoder();
-		UserBuilder users = User.builder().passwordEncoder(password ->{
-			return enconder.encode(password);
-		});
-		
-       builder.inMemoryAuthentication()
-       .withUser(users.username("admin").password("12345").roles("ADMIN","USER"))
-       .withUser(users.username("luis").password("123").roles("USER"));
-       */
+		.authoritiesByUsernameQuery("select u.usuario,r.nom_rol,u.id_usua from tb_rol r inner join tb_usuario u on (r.id_rol=u.id_rol) where u.usuario = ?");
        
 	}
 

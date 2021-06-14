@@ -34,6 +34,8 @@
 					</article> <!-- gallery-wrap .end// -->
 				</aside>
 				<main class="col-sm-6">
+					<form method="post" th:action="@{/producto}">
+					<input style="display: none;" th:value="${producto.prod}" name="probBole"/>
 					<article class="content-body description">
 						<h3 class="title" th:text="${producto.mod_prod}"></h3>
 						<div class="rating-wrap mb-3">
@@ -48,7 +50,7 @@
 							<div class="col">
 							<span class="s-money" >S/.</span>
 								<span class="s-money" th:text="${producto.precio}"></span>
-								<select class="form-control w-50">
+								<select class="form-control w-50" name="cant_prod">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -56,13 +58,14 @@
 								</select>
 							</div> <!-- col.// -->
 							<div class="col text-right">
-								<a href="#" class="btn  btn-primary"> <span class="text">Añadir al carrito</span> <i
-										class="icon fas fa-shopping-cart"></i> </a>
+								<button class="btn  btn-primary">Añadir al carrito <i
+										class="icon fas fa-shopping-cart"></i> </button>
 								<a href="#" class="btn  btn-light"> <i class="far fa-heart"></i> </a>
 							</div> <!-- col.// -->
 						</div> <!-- row.// -->
 
 					</article> <!-- product-info-aside .// -->
+					</form>
 				</main> <!-- col.// -->
 			</div> <!-- row.// -->
 		</div> <!-- card.// -->

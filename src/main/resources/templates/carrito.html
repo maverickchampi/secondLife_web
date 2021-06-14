@@ -30,100 +30,35 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="table-shopping__tr">
+									<tr class="table-shopping__tr" th:each="p:${verCarrito}">
+									<form method="post" th:action="@{/carrito}">
 										<td class="column-product">
 											<figure class="itemside">
 												<div class="aside2"><img
-														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
+														th:src="${p.imagen}"
 														class="img-sm img-shopping"></div>
 												<figcaption class="info">
-													<a href="#" class="title text-dark">Some name of item goes here nice</a>
-													<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+													<a th:href="@{'/producto/' + ${p.codigo}}" class="title text-dark" th:text="${p.descripcion}"></a>
+													<p class="text-muted small" th:text="${p.marca}"></p>
 												</figcaption>
 											</figure>
 										</td>
 										<td>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-											</select>
+											<span th:text="${p.cantidad} + ' ud.'"></span>
 										</td>
 										<td>
 											<div class="price-wrap">
-												<var class="price">$1156.00</var>
-												<small class="text-muted"> $315.20 unidad </small>
+												<span class="price" th:text="'S/. ' + ${p.subtotal}"></span>
+												<small class="text-muted" th:text="'S/. ' + ${p.precio} + ' unidad'">  </small>
 											</div> <!-- price-wrap .// -->
 										</td>
 										<td class="text-right">
 											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
 												data-toggle="tooltip"> <i class="far fa-heart"></i></a>
-											<a href="" class="btn btn-danger"> Eliminar</a>
+											<input style="display: none;" th:value="${p.codigo}" name="probBole"/>
+											<button class="btn btn-danger"> Eliminar</button>
 										</td>
-									</tr>
-									<tr class="table-shopping__tr">
-										<td class="column-product">
-											<figure class="itemside">
-												<div class="aside2"><img
-														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
-														class="img-sm img-shopping"></div>
-												<figcaption class="info">
-													<a href="#" class="title text-dark">Product name goes here nice</a>
-													<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-												</figcaption>
-											</figure>
-										</td>
-										<td>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-											</select>
-										</td>
-										<td>
-											<div class="price-wrap">
-												<var class="price">$149.97</var>
-												<small class="text-muted"> $75.00 unidad </small>
-											</div> <!-- price-wrap .// -->
-										</td>
-										<td class="text-right">
-											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
-												data-toggle="tooltip"><i class="far fa-heart"></i></a>
-											<a href="" class="btn btn-danger btn-round"> Eliminar</a>
-										</td>
-									</tr>
-									<tr class="table-shopping__tr">
-										<td class="column-product"> 
-											<figure class="itemside">
-												<div class="aside2"><img
-														src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/items/7.jpg"
-														class="img-sm img-shopping"></div>
-												<figcaption class="info">
-													<a href="#" class="title text-dark">Another name of some product ..</a>
-													<p class="small text-muted">Size: XL, Color: blue, Brand: Tissot</p>
-												</figcaption>
-											</figure>
-										</td>
-										<td>
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-											</select>
-										</td>
-										<td>
-											<div class="price-wrap">
-												<var class="price">$98.00</var>
-												<small class="text-muted"> $578.00 unidad</small>
-											</div> <!-- price-wrap .// -->
-										</td>
-										<td class="text-right">
-											<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light"
-												data-toggle="tooltip"> <i class="far fa-heart"></i></a>
-											<a href="" class="btn btn-danger btn-round"> Eliminar</a>
-										</td>
+										</form>
 									</tr>
 								</tbody>
 							</table>
@@ -162,7 +97,7 @@
 						<div class="card-body">
 							<dl class="dlist-align">
 								<dt>Precio total:</dt>
-								<dd class="text-right">PEN 4500</dd>
+								<dd class="text-right" th:text="'PEN ' + ${total}"></dd>
 							</dl>
 							<dl class="dlist-align">
 								<dt>Descuento:</dt>
@@ -170,7 +105,7 @@
 							</dl>
 							<dl class="dlist-align">
 								<dt>Total:</dt>
-								<dd class="text-right  h5"><strong>S/ 4,500</strong></dd>
+								<dd class="text-right  h5"><strong  th:text="'PEN ' + ${total}"></strong></dd>
 							</dl>
 							<hr>
 							<!--<p class="text-center mb-3 ml-5 mr-5">

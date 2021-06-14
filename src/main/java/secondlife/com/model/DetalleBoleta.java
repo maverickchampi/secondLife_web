@@ -1,5 +1,6 @@
 package secondlife.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,7 +12,8 @@ public class DetalleBoleta {
 	@Id
 	private String num_det_bol;
 	private String num_bol;
-	private String id_prod;
+	@Column(name = "id_prod")
+	private String probBole;
 	private int cant_prod;
 	private double sub_tot;
 	
@@ -27,11 +29,11 @@ public class DetalleBoleta {
 	public void setNum_bol(String num_bol) {
 		this.num_bol = num_bol;
 	}
-	public String getId_prod() {
-		return id_prod;
+	public String getProbBole() {
+		return probBole;
 	}
-	public void setId_prod(String id_prod) {
-		this.id_prod = id_prod;
+	public void setProbBole(String probBole) {
+		this.probBole = probBole;
 	}
 	public int getCant_prod() {
 		return cant_prod;

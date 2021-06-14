@@ -29,9 +29,6 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-
-	<script src="js/index.js"></script>
-	<script src="../js/index.js"></script>
 </head>
 
 <body>
@@ -65,7 +62,7 @@
 						<div class="nav__account">
 							<div class="nav__account-car">
 								<a th:href="@{/carrito}" class="nav__link"><i class="fa fa-shopping-cart"></i></a>
-								<span class="nro-products" id="nro-products">0</span>
+								<span class="nro-products" id="nro-products" th:text="${carrito.size}"></span>
 							</div>
 							<div class="nav__account-login">
 								<a th:href="@{/perfil}" class="nav__link"><i class="fa fa-user"></i></a>

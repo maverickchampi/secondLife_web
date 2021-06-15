@@ -1,5 +1,6 @@
 package secondlife.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,7 +16,8 @@ public class Direccion {
     private String desc_direc;    
     private String etiqueta;    
     private int id_dist;
-    private String id_log;
+	@Column(name = "id_usua")
+    private String usuar;
 
     /*-------Getters and Setters-----------*/
 	public String getId_direc() {
@@ -66,12 +68,11 @@ public class Direccion {
 		this.id_dist = id_dist;
 	}
 
-	public String getId_log() {
-		return id_log;
+	public String getUsuar() {
+		return usuar;
 	}
 
-	public void setId_log(String id_log) {
-		this.id_log = id_log;
+	public void setUsuar(String usuar) {
+		this.usuar = usuar;
 	}
-      
 }

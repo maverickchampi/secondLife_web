@@ -1,6 +1,8 @@
 package secondlife.com.model;
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,9 +15,10 @@ public class Tarjeta {
 	private String id_tarj;
 	private String tip_tarj;
 	private String num_tarj;
-	private Date fec_venc;
+	private String fec_venc;
 	private int cvv;
-	private String id_log;
+	@Column(name = "id_usua")
+    private String usuari;
 
 	/*-------Getters and Setters-----------*/
 	public String getId_tarj() {
@@ -42,11 +45,11 @@ public class Tarjeta {
 		this.num_tarj = num_tarj;
 	}
 
-	public Date getFec_venc() {
+	public String getFec_venc() {
 		return fec_venc;
 	}
 
-	public void setFec_venc(Date fec_venc) {
+	public void setFec_venc(String fec_venc) {
 		this.fec_venc = fec_venc;
 	}
 
@@ -58,13 +61,12 @@ public class Tarjeta {
 		this.cvv = cvv;
 	}
 
-	public String getId_log() {
-		return id_log;
+	public String getUsuari() {
+		return usuari;
 	}
 
-	public void setId_log(String id_log) {
-		this.id_log = id_log;
+	public void setUsuari(String usuari) {
+		this.usuari = usuari;
 	}
-	
 	
 } 

@@ -33,6 +33,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				// ACA VAN LOS ROLES Y LOS PERMISOS DE USUARIO
 				.antMatchers("/perfil/**").hasAnyAuthority("cliente")
 				.antMatchers("/cotizar/**").hasAnyAuthority("cliente")
+				.antMatchers("/pago/**").hasAnyAuthority("cliente")
+				.antMatchers("/tarjetaPago/**").hasAnyAuthority("cliente")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.permitAll();
 	}

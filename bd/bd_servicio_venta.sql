@@ -77,7 +77,7 @@ create table tb_tarjeta (
 	id_tarj char(5) not null,
     tip_tarj varchar(25) not null,
     num_tarj char(16) not null,
-    fec_venc date not null,
+    fec_venc char(5) not null,
     cvv int not null,
     id_usua char(5) not null
 );
@@ -135,10 +135,11 @@ alter table tb_distrito
     modify id_dist int auto_increment;
     
 /*----------------tabla direccion----------------*/
+
 create table tb_direccion(
 	id_direc char(5) not null,
-    latitud decimal not null,
-    longitud decimal not null,
+    latitud decimal null,
+    longitud decimal null,
     desc_direc varchar(256) not null,
     etiqueta varchar(15) not null,
     id_dist  int not null,
@@ -272,7 +273,7 @@ alter table tb_boleta
     add constraint FKbol_usua foreign key (id_usua) references tb_usuario(id_usua),
     add constraint FKbol_direc foreign key (id_direc) references tb_direccion(id_direc),
     add constraint CKbol_impo check (impo_bol>=1.0),
-    add constraint CKbol_envio check (envio>=1.0),
+    add constraint CKbol_envio check (envio>=0),
     add constraint CKbol_total check (total_bol>=5.0),
     add constraint CKtip_pago check (tipo_pago in (1, 2));   
     
@@ -302,19 +303,19 @@ create table tb_detalle_boleta(
 );
 alter table tb_detalle_boleta
 	add constraint PKdetalbol primary key (num_det_bol),
-    add constraint FKdetalbol_bol foreign key (num_bol) references tb_boleta(num_bol),
+    add constraint FKdetalbol_bol foreign key (num_bol) references tb_boleta (num_bol),
     add constraint FKdetalbol_prod foreign key (id_prod) references tb_producto(id_prod),
-    add constraint CKdetalbol_cant check (cant_prod>=1 and cant_prod<=5),
-    add constraint CKdetalbol_sub check (sub_tot>=5.0 and sub_tot<=5000);    
+    add constraint CKdetalbol_cant check (cant_prod>=1),
+    add constraint CKdetalbol_sub check (sub_tot>=0.0 and sub_tot<=5000);    
 delimiter $$
 create trigger tg_insertar_iddetalleboleta
 before insert on tb_detalle_boleta
 for each row
 begin
     if (select COUNT(*) FROM tb_detalle_boleta)=0   THEN
-        set new.num_bol= '000001';
+        set new.num_det_bol= '000001';
     else
-        set new.num_bol= CONCAT(LPAD((SELECT COUNT(*) FROM tb_detalle_boleta)+1, 6, '0'));
+        set new.num_det_bol= CONCAT(LPAD((SELECT COUNT(*) FROM tb_detalle_boleta)+1, 6, '0'));
 	end if;
 end$$
 delimiter ; 
@@ -397,13 +398,13 @@ insert into tb_rol values (null, 'proveedor');
 insert into tb_usuario values(null,'12345678', 4, 'Alex', 'Quispe Cavero', '987654321','2002-04-23', 'clientealex', '$2a$10$Wx/44JwiShgbvK16pezQDe4tyktF0kskmrgOoRd8tW7UcUh9sSFc6', 'alexelleon@gmail.com',1);
 
 /*----------------------LAPTOPS-------------------------*/
-insert into tb_registro values (null, 1, 'us001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 1, 800.0, 'no imagen', 6.0, 1);
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop HP...', 'El equipo muestra ligero rapones en la pintura de la parte frontal, software y componentes en buen estado.', '2021-05-01', 20, 800.0, 'no imagen', 6.0, 1);
 insert into tb_producto values (null, '632541-001', 1, 'HP', '15-dw1085la', 'Procesador: i3-10110U; RAM: 4GB DDR4; ROM: 256GB SSD; Pantalla: 15,6" FHD',
-								'Equipo en buen estado, pintura refaccionada', '2021-05-07', 1, 1500.0, 'https://i.ibb.co/V34qsXc/laptop1.png', 8.5, 1);
+								'Equipo en buen estado, pintura refaccionada', '2021-05-07', 20, 1500.0, 'https://i.ibb.co/V34qsXc/laptop1.png', 8.5, 1);
                                 
-insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 1, 500.0,'no imagen', 4.5, 1);                      
+insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo se muestra sin sistema operativo, y daño en uno de los puertos USB', '2021-05-10', 20, 500.0,'no imagen', 4.5, 1);                      
 insert into tb_producto values (null, '632541-002', 1, 'HP', '15-dw10adde', 'Procesador: i3-10110U; RAM: 8GB DDR4; ROM: 128GB SSD; Pantalla: 15,6" FHD',
-								'Equipo en buen estado, sistema instalado y puerto usb reparado', '2021-05-15', 1, 1000.0, 'https://i.ibb.co/sCXrvQh/laptop2.png', 7.5, 1);
+								'Equipo en buen estado, sistema instalado y puerto usb reparado', '2021-05-15', 20, 1000.0, 'https://i.ibb.co/sCXrvQh/laptop2.png', 7.5, 1);
   
 insert into tb_registro values (null, 1, 'us001', 'Es una laptop ...', 'El equipo muestra placa base destruida, pantalla inservible y teclado con falta de teclas', '2021-05-10', 1, 200.0, 'no imagen', 2.7, 1);      
 insert into tb_producto values (null, '632541-003', 1, 'HP', '67-dw1085la', 'Procesador: i5-10110U; RAM: 4GB DDR4; ROM: 256GB SSD; Pantalla: 15,6" FHD',
@@ -652,7 +653,6 @@ insert into tb_producto values (null, '260022-010', 6, 'SAMSUNG', 'QN50Q60AAGXPE
 
 /*----------------------AUDIO-------------------------*/
 
-<<<<<<< HEAD
 insert into tb_registro values (null, 1, 'us001', 'Es un AUDIFONO ...', 'El equipo muestra audio estatico', '2021-05-10', 1, 40.0, 'no imagen', 5.0, 1);                                    
 insert into tb_producto values (null, '840188-001', 7, 'ANTRYX', 'S. KLIPER 7.1 AGH-8000SR7', 'Audio: 7.1; Inalámbrico: No; Micrófono: Si; Control: No; Plegable: No; Cancelacion de ruido: No',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25',  1, 120.0, 'https://i.ibb.co/njjJLPR/Aud-fono-Antryx-S-KLIPER-7-1-AGH-8000-SR7.png', 7.0, 1);
@@ -692,10 +692,7 @@ insert into tb_producto values (null, '840188-009', 7, 'LOGITECH', 'Z407', 'Tota
 insert into tb_registro values (null, 1, 'us001', 'Es un PARLANTYE ...', 'El equipo muestra audio estatico', '2021-05-10', 1, 200.0, 'no imagen', 5.0, 1);                                    
 insert into tb_producto values (null, '840188-010', 7, 'LOGITECH', 'G560', 'Total de vatios de pico: 240 W; Total de vatios reales: 120 W; Versión de Bluetooth: 4.1; Confiable radio de acción de 25 metros con línea de visión directa; Entrada USB: 1; Toma de audífonos: 1',
 								'Equipo en buen estado, completamente restaurado', '2020-07-25',  1, 600.0, 'https://i.ibb.co/pzbWbPt/G560.png', 7.0, 1);
-/*
-=======
->>>>>>> 0657d7b097de42111844b53fe3f0cbd74ee94553
-*/
+
 /*
 use bd_servicio_venta;
 select*from tb_usuario;
@@ -723,4 +720,3 @@ create table authorities(
 	username varchar(50),
     authority varchar(50)
 );
-select * from tb_usuario

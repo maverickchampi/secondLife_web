@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout/layout::head"></head>
+<head th:replace="layout/layout::head2"></head>
 
 <body>
 	
@@ -153,6 +153,10 @@
 	<!-- ========================= SECTION CONTENT END// ========================= -->
 
 	<footer th:replace="layout/layout::footer-2"></footer>
-
+	
+	<script>
+	$(document).ready(function() {
+    $('#producto').DataTable();
+} );</script>
 </body>
 </html>

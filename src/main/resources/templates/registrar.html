@@ -18,42 +18,42 @@
 					<div class="form-row">
 						<div class="col form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" placeholder="" name="nom_usua">
+							<input type="text" class="form-control" placeholder="" name="nom_usua" required minlength="2">
 						</div> 
 						<div class="col form-group">
 							<label>Apellido</label>
-							<input type="text" class="form-control" placeholder="" name="ape_usua">
+							<input type="text" class="form-control" placeholder="" name="ape_usua" required minlength="2">
 						</div> 
 					</div>
 					<div class="form-row">
 						<div class="col form-group">
 							<label>DNI</label>
-							<input type="number" class="form-control" placeholder="" name="dni_usua">
+							<input type="number" class="form-control" placeholder="" name="dni_usua" required minlength="8" maxlength="8">
 						</div> 
 						<div class="col form-group">
 							<label>Fecha de nacimiento</label>
-							<input type="date" class="form-control" placeholder="" name="fec_nac_usua">
+							<input type="date" class="form-control" placeholder="" name="fec_nac_usua" required>
 						</div> 
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" placeholder="" name="email_log">
+						<input type="email" class="form-control" placeholder="" name="email_log" required minlength="10">
 						<small class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
 					</div> 
 					<div class="form-row">
 						<div class="col form-group">
 							<label>Usuario</label>
-							<input type="text" class="form-control" placeholder="" name="usuario">
+							<input type="text" class="form-control" placeholder="" name="usuario" required minlength="7">
 						</div> 
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6" >
 							<label>Crear contraseña</label>
-							<input class="form-control" type="password" name="pass">
+							<input class="form-control" type="password" name="pass" required minlength="7">
 						</div> 
 						<div class="form-group col-md-6">
 							<label>Repetir contraseña</label>
-							<input class="form-control" type="password">
+							<input class="form-control" type="password" required minlength="7">
 						</div> 
 					</div>
 					<div class="form-group">
@@ -61,7 +61,7 @@
 					</div>
 					<div class="form-group">
 						<label class="custom-control custom-checkbox"> <input type="checkbox"
-								class="custom-control-input" checked="">
+								class="custom-control-input" checked="" required>
 							<div class="custom-control-label"> Estoy de acuerdo con los <a href="terminos">términos y condiciones</a>
 							</div>
 						</label>

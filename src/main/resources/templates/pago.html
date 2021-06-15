@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>
+
+<head th:replace="layout/layout::head"></head>
+
+<body>
+    <header th:replace="layout/layout::header"></header>
+
+    <!-- ========================= SECTION  ======================= -->
+    <section class="header-main border-0 back-color-light mb-4 mt-4">
+        <div class="container">
+            <div class="row align-items-center menu" style="flex-direction: column;">
+                <div class="col-12 col-md-12 col-lg-4 col-sm-12 order-md-1 pago">
+                    <div div class="list-group menu-perfil border rounded" id="list-tab" role="tablist" style="flex-direction:row">
+                        <a class="list-group-item list-group-item-action active" id="list--personal-list" >
+                            <div class="row">
+                                <div class="col-3 col-lg-2 col-md-3 col-sm-3">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                </div>
+                                <div class="col-6 col-lg-8 col-md-7 col-sm-6 p-2" style="max-width: auto;">
+                                    <span style="margin-left: 5px;">Datos del titular</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action"  id="list-password-list">
+                            <div class="row">
+                                <div class="col-3 col-lg-2 col-md-3 col-sm-3">
+                                    <i class="bi bi-credit-card"></i>
+                                </div>
+                                <div class="col-6 col-lg-8 col-md-7 col-sm-6 p-2" style="max-width: auto;">
+                                    <span style="margin-left: 5px;">Método de pago</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="list-buy-list" >
+                            <div class="row">
+                                <div class="col-3 col-lg-2 col-md-3 col-sm-3">
+                                    <i class="bi bi-file-earmark-check"></i>
+                                </div>
+                                <div class="col-6 col-lg-8 col-md-7 col-sm-6 p-2" style="max-width: auto;">
+                                    <span style="margin-left: 5px;">Confirmación</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>             
+                </div>
+                <div class="col-12 col-md-12 col-lg-8 col-sm-12 order-md-2 perfil">
+                    <div class="tab-content perfil" id="nav-tabContent">
+                         <!-- ====================================-DATOS PERSONALES ==================================== -->
+                        <div class="tab-pane fade show active" id="list-personal" role="tabpanel" aria-labelledby="list-personal-list">
+                                <div class="container-personal p-4 border rounded">
+                                     <div class="row ">
+                                        <div class="col-md-6">
+                                            		<label for="" class="col-form-label-sm" style="display:block;">Seleccione una dirección</label>
+                                            		<select class="form-control" id="direccion-boleta">
+															<option th:each="d:${direcciones}" 
+															th:value="${d.id_direc}" 
+															th:text="${d.desc_direc} + ' ( ' + ${d.etiqueta} + ' )'" 
+															h:data = "${d.id_direc}"></option>
+													</select>
+													
+			                                        <div class="col-md-12">
+										  				 <a href="#list-password" onclick="irMetodo()" id="list-password-list" data-toggle="list"  role="tab" class="btn btn-primary">Siguiente</a>
+			                                        </div>
+											<span class="resumen-border">Si no tiene dirección, agregue una...</span>
+										<form th:action="@{/direccionPago}" method="post">
+			                                <div class="container-personal p-4 border rounded">
+			                                	<input style="display: none;" th:value="${user.id_usua}" name="usuar"/>
+			                                    <h5>Agregue direccción</h5>
+			                                    <div class="row">
+			                                        <div class="col-md-12">
+			                                            <label for="desc_direc" class="col-form-label-sm">Descripción : </label>
+			                                            <input type="text" class="form-control form-control-sm border-secondary" name="desc_direc" minlength="4" required> 
+			                                        </div> 
+			                                        <div class="col-md-12">
+			                                            <label for="etiqueta" class="col-form-label-sm">Etiqueta : </label>
+			                                            <input type="text" class="form-control form-control-sm border-secondary" name="etiqueta" required> 
+			                                        </div> 
+			                                        <div class="col-md-12">
+			                                            <label for="apellido_usua" class="col-form-label-sm">Distrito : </label>
+					                                        <select class="form-control" name="id_dist" >
+																<option th:each="d:${distritos}" 
+																th:value="${d.id_dist}" 
+																th:text="${d.nom_dist}" name="id_dist" 
+																h:data = "${d.id_dist}"></option>
+															</select>
+			                                        </div>
+			                                        <div class="col-md-12" style="margin-top: 10px;">
+										  				<button class="btn btn-warning">Agregar dirección</button>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                              </form>
+                                        </div> 
+                                        <div class="col-md-6">
+                                          <div class="resumen">
+                                            <label for="" class="col-form-label-sm" style="color: #fff;">Total a pagar</label>
+                                            <span class="precio-total" th:text="'S/. ' + ${total}"></span>
+                                          </div>
+                                          <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Envio : </label>
+                                            <span>S/.0 (GRATIS)</span>
+                                          </div> 
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Usuario : </label>
+                                            <span th:text="${user.nom_usua} + ' ' + ${user.ape_usua}"></span>
+                                          </div>
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Fecha : </label>
+                                            <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy')}"></span>
+                                          </div> 
+                                        </div>
+                                    </div>                   
+                                </div>
+                        </div>
+                         <!--  ====================================CAMBIO DE DATOS DEL USUARIO ==================================== -->
+                        <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
+                                <div class="container-personal user p-4 border rounded">
+                                   <div class="row ">
+                                        <div class="col-md-6">
+                                            		<label for="" class="col-form-label-sm" style="display:block;">Seleccione una tarjeta</label>
+                                            		<select class="form-control" id="tarjeta-boleta">
+															<option th:each="t:${tarjetas}" 
+															th:value="${t.id_tarj}" 
+															th:text="${t.num_tarj} + ' (' + ${t.tip_tarj} + ' )'" 
+															h:data = "${t.id_tarj}"></option>
+													</select>
+													
+			                                        <div class="col-md-12">
+			                                       		 <a href="#list-personal" onclick="volverDatos()" id="list--personal--list" data-toggle="list"  role="tab" class="btn btn-primary" style="margin-right: 10px;">Anterior</a>
+										  				 <a href="#list-buy" onclick="irConfirmacion()" id="list-password-list" data-toggle="list"  role="tab" class="btn btn-primary">Pagar</a>
+			                                        </div>
+											<span class="resumen-border">Si no tiene tarjeta, agregue una...</span>
+											<form th:action="@{/tarjetaPago}" method="post">
+				                                <div class="container-personal p-4 border rounded">
+				                                	<input style="display: none" th:value="${user.id_usua}" name="usuari"/>
+				                                    <h5>Agregue tarjeta</h5>
+				                                    <div class="row">
+				                                        <div class="col-md-12">
+				                                            <label for="num_tarj" class="col-form-label-sm">Número : </label>
+				                                            <input type="text" maxlength="16" class="form-control form-control-sm border-secondary" name="num_tarj"required> 
+				                                        </div> 
+				                                        <div class="col-md-12">
+				                                            <label for="fec_venc" class="col-form-label-sm"> Fecha : </label>
+				                                            <input type="text" maxlength="5" class="form-control form-control-sm border-secondary" name="fec_venc"required> 
+				                                        </div> 
+				                                        <div class="col-md-12">
+				                                            <label for="cvv" class="col-form-label-sm"> Cvv : </label>
+				                                            <input type="text" maxlength="3" class="form-control form-control-sm border-secondary" name="cvv" required> 
+				                                        </div> 
+				                                        <div class="col-md-12" style="margin-top: 10px;">
+											  				<button class="btn btn-warning">Agregar tarjeta</button>
+				                                        </div>
+				                                    </div>
+				                                </div>
+											</form>
+                                        </div> 
+                                        <div class="col-md-6">
+                                          <div class="resumen">
+                                            <label for="" class="col-form-label-sm" style="color: #fff;">Total a pagar</label>
+                                            <span class="precio-total" th:text="'S/. ' + ${total}"></span>
+                                          </div>
+                                          <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Envio : </label>
+                                            <span>S/.0 (GRATIS)</span>
+                                          </div> 
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Usuario : </label>
+                                            <span th:text="${user.nom_usua} + ' ' + ${user.ape_usua}"></span>
+                                          </div>
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Fecha : </label>
+                                            <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy')}"></span>
+                                          </div> 
+                                        </div>
+                                    </div>     
+                                </div>
+                        </div>
+                         <!--  ====================================LISTA DE COMPRAS ==================================== -->
+                        <div class="tab-pane fade " id="list-buy" role="tabpanel" aria-labelledby="list-buy-list">
+                        <form th:action="@{/pago}" method="post">
+                            <div class="container-personal user p-4 border rounded" style="height: auto;">
+                                   <div class="row ">
+                                        <div class="col-md-6">
+					                        <tbody>
+												<div class="table-shopping__tr" th:each="p:${verCarrito}"  style="padding: 10px;border: 1px solid black;">
+													<td class="column-product">
+														<figure class="itemside">
+															<div class="aside2"><img
+																	th:src="${p.imagen}"
+																	class="img-sm img-shopping"></div>
+															<figcaption class="info">
+																<a th:href="@{'/producto/' + ${p.codigo}}" class="title text-dark" th:text="${p.descripcion}"></a>
+																<p class="text-muted small" th:text="${p.marca}"></p>
+															</figcaption>
+														</figure>
+													</td>
+													<td>
+														<span th:text="${p.cantidad} + ' ud.'"></span>
+													</td>
+													<td>
+														<div class="price-wrap">
+															<span th:text="'S/. ' + ${p.subtotal}"></span>
+															<small class="text-muted" th:text="' ( S/. ' + ${p.precio} + ' unidad )'">  </small>
+														</div> <!-- price-wrap .// -->
+													</td>
+												</div>
+											</tbody>
+                                        </div> 
+                                        <div class="col-md-6">
+                                          <div class="resumen">
+                                            <label for="" class="col-form-label-sm" style="color: #fff;">Total a pagar</label>
+                                            <span class="precio-total" th:text="'S/. ' + ${total}"></span>
+                                          </div>
+                                          <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Envio : </label>
+                                            <span>S/.0 (GRATIS)</span>
+                                          </div> 
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Usuario : </label>
+                                            <span th:text="${user.nom_usua} + ' ' + ${user.ape_usua}"></span>
+                                          </div>
+                                           <div class="resumen-box">
+                                            <label for="" class="col-form-label-sm">Fecha : </label>
+                                            <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy')}"></span>
+                                          </div>
+                                          <div class="container-personal p-4 border rounded" style="margin: 15px 0;">
+				                                	<input style="display: none" th:value="${user.id_usua}" name="usua"/>
+				                                	<input style="display: none" th:value="${total}" name="impo_bol"/>
+				                                    <h5>Resumen</h5>
+				                                    <div class="row">
+				                                        <div class="col-md-12">
+				                                            <label for="num_tarj" class="col-form-label-sm">Dirección : </label>
+			                                			<input style="display: none;" id="dir_value" name="id_direc"/>
+				                                            <input type="text"readonly id="dir_text" required style="display: block;width: 100%;"> 
+				                                        </div> 
+				                                        <div class="col-md-12">
+				                                            <label for="fec_venc" class="col-form-label-sm"> Tarjeta : </label>
+			                                			<input style="display: none;" id="fec_value"  name="descrip_pago"/>
+				                                            <input type="text" readonly id="fec_text" required style="display: block;width: 100%;"> 
+				                                        </div> 
+				                                        <div class="col-md-12" style="margin-top: 10px;">
+				                                        	<a href="#list-password" onclick="volverMetodo()" id="list--personal--list" data-toggle="list"  role="tab" class="btn btn-primary" style="margin-right: 10px;">Anterior</a>
+											  				<button class="btn btn-success">Confirmar Pago</button>
+				                                        </div>
+				                                    </div>
+				                            </div>
+                                        </div>
+                                    </div> 
+                                    </form>    
+                                </div>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    
+    <!-- ========================= SECTION  END// ======================= -->
+    
+    <footer th:replace="layout/layout::footer-2"></footer>
+    
+    <script>
+    	function irMetodo(){
+			document.getElementById('list--personal-list').classList.remove('active');
+			document.getElementById('list-personal').classList.remove('show');
+			document.getElementById('list-personal').classList.remove('active');
+			
+			document.getElementById('list-password-list').classList.add('active');
+			document.getElementById('list-password').classList.add('show');
+			document.getElementById('list-password').classList.add('active');
+		}
+		function volverDatos(){
+			document.getElementById('list--personal-list').classList.add('active');
+			document.getElementById('list-personal').classList.add('show');
+			document.getElementById('list-personal').classList.add('active');
+			
+			document.getElementById('list-password-list').classList.remove('active');
+			document.getElementById('list-password').classList.remove('show');
+			document.getElementById('list-password').classList.remove('active');
+		}
+		function irConfirmacion(){
+			document.getElementById('list-buy-list').classList.add('active');
+			document.getElementById('list-buy').classList.add('show');
+			document.getElementById('list-buy').classList.add('active');
+			
+			document.getElementById('list-password-list').classList.remove('active');
+			document.getElementById('list-password').classList.remove('show');
+			document.getElementById('list-password').classList.remove('active');
+			
+			
+			let dir = document.getElementById('direccion-boleta')
+			let tarj = document.getElementById('tarjeta-boleta')
+			
+			document.getElementById('dir_value').value = dir.value;
+			document.getElementById('dir_text').value = dir.options[dir.selectedIndex].text;
+			document.getElementById('fec_value').value = tarj.value;
+			document.getElementById('fec_text').value = tarj.options[tarj.selectedIndex].text;
+			
+		}
+		function volverMetodo(){
+			document.getElementById('list-buy-list').classList.remove('active');
+			document.getElementById('list-buy').classList.remove('show');
+			document.getElementById('list-buy').classList.remove('active');
+			
+			document.getElementById('list-password-list').classList.add('active');
+			document.getElementById('list-password').classList.add('show');
+			document.getElementById('list-password').classList.add('active');
+		}
+    </script>
+    
+</body>
+</html>

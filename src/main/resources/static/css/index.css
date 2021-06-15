@@ -298,3 +298,25 @@ a:hover {
 	min-height: 100px;
     box-sizing: border-box;
 }
+@media (min-width: 992px){
+.pago {
+    max-width: 67%;
+}
+}
+.precio-total{
+	display: block;
+    font-size: 30px;
+	color:#fff;
+}
+.resumen{
+	background-color: #000;
+	padding: 10px;
+}
+.resumen-box{
+	border: 1px solid #000;
+	padding: 10px;
+}
+.resumen-border{
+	display: block;
+	padding: 10px 0
+}

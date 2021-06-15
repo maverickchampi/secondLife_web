@@ -1,5 +1,6 @@
 package secondlife.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,8 +11,10 @@ import javax.persistence.Table;
 public class Boleta {
 	@Id
 	private String num_bol;
-	private String id_log;
+	@Column(name = "id_usua")
+	private String usua;
 	private int tipo_pago;
+	private String descrip_pago;
 	private String id_direc;
 	private String fec_bol;
 	private double impo_bol;
@@ -24,17 +27,23 @@ public class Boleta {
 	public void setNum_bol(String num_bol) {
 		this.num_bol = num_bol;
 	}
-	public String getId_log() {
-		return id_log;
+	public String getUsua() {
+		return usua;
 	}
-	public void setId_log(String id_log) {
-		this.id_log = id_log;
+	public void setUsua(String usua) {
+		this.usua = usua;
 	}
 	public int getTipo_pago() {
 		return tipo_pago;
 	}
 	public void setTipo_pago(int tipo_pago) {
 		this.tipo_pago = tipo_pago;
+	}
+	public String getDescrip_pago() {
+		return descrip_pago;
+	}
+	public void setDescrip_pago(String descrip_pago) {
+		this.descrip_pago = descrip_pago;
 	}
 	public String getId_direc() {
 		return id_direc;

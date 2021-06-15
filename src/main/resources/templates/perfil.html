@@ -109,58 +109,54 @@
                     <div class="tab-content perfil" id="nav-tabContent">
                          <!-- ====================================-DATOS PERSONALES ==================================== -->
                         <div class="tab-pane fade show active" id="list-personal" role="tabpanel" aria-labelledby="list-personal-list">
-                            <form action="" method="get">
+                            <form th:action="@{/perfil}" method="post">
                                 <div class="container-personal p-4 border rounded">
                                     <h5>Datos personales</h5>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="nombre_usua" class="col-form-label-sm"> Nombre</label>
-                                            <input type="text" class="form-control form-control-sm border-secondary" id="nombre_usua" value="Mauricio" required> 
+                                            <input type="text" class="form-control form-control-sm border-secondary" th:value="${user.nom_usua}" name="nom_usua" required> 
                                         </div> 
                                         <div class="col-md-6">
                                             <label for="apellido_usua" class="col-form-label-sm"> Apellido</label>
-                                            <input type="text" class="form-control form-control-sm border-secondary" id="apellido_usua" value="Morales" required> 
+                                            <input type="text" class="form-control form-control-sm border-secondary" th:value="${user.ape_usua}" name="ape_usua" required> 
                                         </div> 
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="nombre_usua" class="col-form-label-sm"> DNI</label>
-                                            <input type="number" class="form-control form-control-sm border-secondary" id="nombre_usua" value="0000000" required> 
+                                            <input type="number" class="form-control form-control-sm border-secondary" maxlength="8" minlength="8" th:value="${user.dni_usua}" name="dni_usua" required> 
                                         </div> 
                                         <div class="col-md-6">
                                             <label for="apellido_usua" class="col-form-label-sm"> Fecha de nacimiento</label>
-                                            <input type="date" class="form-control form-control-sm border-secondary" id="apellido_usua" value="" required> 
+                                            <input type="date" class="form-control form-control-sm border-secondary" th:value="${user.fec_nac_usua}" name="fec_nac_usua"  required> 
                                         </div> 
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="nombre_usua" class="col-form-label-sm"> Teléfono</label>
-                                            <input type="tel" class="form-control form-control-sm border-secondary" id="nombre_usua" value="999999999" required> 
+                                            <input type="text" class="form-control form-control-sm border-secondary" th:value="${user.tel_usua}" name="tel_usua" required> 
                                         </div> 
                                         <div class="col-md-6">
-                                            <label for="apellido_usua" class="col-form-label-sm"> Distrito</label>
-                                            <select id="direc_usua" class="form-control form-control-sm border-secondary">
-                                                <option>Disabled select</option>
-                                            </select>
+                                            <label for="nombre_usua" class="col-form-label-sm"> Correo</label>
+                                            <input type="email" class="form-control form-control-sm border-secondary" th:value="${user.email_log}" name="email_log" required> 
                                         </div> 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="nombre_usua" class="col-form-label-sm"> Dirección</label>
-                                            <input type="text" class="form-control form-control-sm border-secondary" id="nombre_usua" value="AV. Benavides N°77" required> 
+                                        <div class="col-md-6">
+                                            <label for="nombre_usua" class="col-form-label-sm"> Usuario</label>
+                                            <input type="text" class="form-control form-control-sm border-secondary" th:value="${user.usuario}" name="usuario" required> 
                                         </div> 
-                                    </div> 
+                                        <div class="col-md-6">
+                                            <label for="nombre_usua" class="col-form-label-sm"> Cambiar contraseña</label>
+                                            <input type="password" class="form-control form-control-sm border-secondary" placeholder="Ingrese nueva contraseña" name="pass" value=""> 
+                                        </div> 
+                                    </div>
                                 </div>
                                 <div class="container-personal-noti border rounded">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="custom-control custom-checkbox p-3">
-                                                <input type="checkbox" class="custom-control-input btn-danger" id="customCheck1">
-                                                <label class="custom-control-label col-form-label-sm" for="customCheck1">Quiero recibir mensajes con ofertas y novedades por mi correro electrónico.</label>
-                                            </div>
-                                        </div> 
-                                        <div class="col-md-12 text-right">
-                                            <input type="submit" class="btn save" value="Guardar datos">
+                                        <div class="col-md-12 text-right" style="margin-top: 10px;">
+                                            <input type="submit" class="btn save" value="Actualizar datos">
                                         </div> 
                                     </div>                           
                                 </div>

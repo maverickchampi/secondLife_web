@@ -58,10 +58,10 @@ public class ProyectoController {
 	private ITarjeta it;
 
 	@Autowired
-	private IBoleta ib;
+	private IBoleta ib;/**/
 	
 	@Autowired
-	private IDetalleBoleta idb;
+	private IDetalleBoleta idb;/**/
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -323,7 +323,8 @@ public class ProyectoController {
 	@PostMapping("/registrar")
 	public String registrarPost(Usuario u, Model model) {
 		u.setPass(passwordEncoder.encode(u.getPass()));
-		u.setId_usua("");
+		String cod = newCodigo(iu.getLastCodigo(),3);
+		u.setId_usua(cod);
 		u.setEstado(1);
 		u.setId_rol(4);
 		iu.save(u);
@@ -381,7 +382,6 @@ public class ProyectoController {
 
 	@PostMapping("/pago")
 	public String pagoPost(Boleta bol, Model model,@ModelAttribute("carrito")ArrayList<DetalleBoleta> carrito) {
-		bol.setNumBol("");
 		bol.setTipo_pago(1);
 		
 		Date date = new Date();
@@ -391,9 +391,17 @@ public class ProyectoController {
 		bol.setEnvio(0);
 		bol.setTotal_bol(bol.getImpo_bol() + bol.getEnvio());
 		
-		ib.save(bol);
+		String codigoBoleta = ib.getLastCodigo();
 		
-		String codigoBoleta = ib.getLastNum(bol.getUsua());
+		if(codigoBoleta == null) {
+			codigoBoleta="bo000001";
+		}else {
+			codigoBoleta = newCodigo(codigoBoleta, 6);
+		}
+		
+		bol.setNumBol(codigoBoleta);
+		
+		ib.save(bol);
 		
 		for(int i = 0; i < carrito.size();i++) {
 			DetalleBoleta db = carrito.get(i);
@@ -401,7 +409,16 @@ public class ProyectoController {
 			p.setStock(p.getStock()-db.getCant_prod());
 			
 			db.setNumBol(codigoBoleta);
-			db.setNum_det_bol(i + "");
+			
+			String code = idb.getLastCodigo();
+			
+			if(code == null) {
+				code="db0001";
+			}else {
+				code = newCodigo(code, 4);
+			}
+			
+			db.setNum_det_bol(code);
 			
 			db.setSubTot(db.getCant_prod() * p.getPrecio());
 			
@@ -422,7 +439,15 @@ public class ProyectoController {
 	
 	@PostMapping("/direccionPago")
 	public String direccionPago(Direccion dir,Model model) {
-		dir.setIdDirec("");
+		String code = idir.getLastCodigo();
+		
+		if(code == null) {
+			code="di001";
+		}else {
+			code = newCodigo(code, 3);
+		}
+		
+		dir.setIdDirec(code);
 		dir.setLatitud(0);
 		dir.setLongitud(0);
 		idir.save(dir);
@@ -432,7 +457,16 @@ public class ProyectoController {
 	
 	@PostMapping("/tarjetaPago")
 	public String tarjetaPago(Tarjeta tar,Model model) {
-		tar.setId_tarj("");
+		
+		String code = it.getLastCodigo();
+		
+		if(code == null) {
+			code="di001";
+		}else {
+			code = newCodigo(code, 3);
+		}
+		
+		tar.setId_tarj(code);
 		
 		String tarjeta ="";
 		if(tar.getNum_tarj().charAt(0) == '4') {
@@ -488,9 +522,22 @@ public class ProyectoController {
 		}
 		Usuario u =  iu.findByUsuario(auto.getName());
 		
+		if(dir.getIdDirec().equals("")) {
+			String code = idir.getLastCodigo();
+			
+			if(code == null) {
+				code="di001";
+			}else {
+				code = newCodigo(code, 3);
+			}
+			
+			dir.setIdDirec(code);
+		}
+		
 		dir.setLatitud(0);
 		dir.setLongitud(0);
 		dir.setUsuar(u.getId_usua());
+		
 		idir.save(dir);
 		
 		model.addAttribute("carrito", carrito);
@@ -558,6 +605,18 @@ public class ProyectoController {
 		}
 		Usuario u =  iu.findByUsuario(auto.getName());
 		
+		if(tar.getId_tarj().equals("")) {
+			String code = it.getLastCodigo();
+			
+			if(code == null) {
+				code="ta001";
+			}else {
+				code = newCodigo(code, 3);
+			}
+			
+			tar.setId_tarj(code);
+		}
+		
 		String tarjeta ="";
 		if(tar.getNum_tarj().charAt(0) == '4') {
 			tarjeta="Visa";
@@ -595,4 +654,24 @@ public class ProyectoController {
 		return "admin";
 	}
 
+	
+	private String newCodigo(String codigo,int totalNumbers) {
+		 String letter = codigo.substring(0,2);
+	        String number = codigo.substring(2,totalNumbers + 2);
+	        int num = Integer.parseInt(number);
+	        num++;
+	        String numtoString = num + "";
+	        
+	        String newNumber = "";
+	        
+	        for(int i=0;i< (totalNumbers -numtoString.length());i++){
+	            newNumber += "0";
+	        }
+	        
+	        newNumber += num;
+	        
+	        String newCodigo = letter + newNumber;
+		
+	        return newCodigo;
+	}
 }

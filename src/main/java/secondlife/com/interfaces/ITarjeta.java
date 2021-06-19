@@ -20,4 +20,7 @@ public interface ITarjeta extends JpaRepository<Tarjeta, String>{
 	 @Transactional
 	 @Query(value="delete from tb_tarjeta t where t.id_tarj = :id_tarj", nativeQuery=true)
 	 void deleteDirecByIdTarj(String id_tarj);
+	 
+	 @Query(value="select id_tarj from tb_tarjeta order by id_tarj desc limit 1", nativeQuery=true)
+	    String getLastCodigo();
 }

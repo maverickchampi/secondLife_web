@@ -19,4 +19,7 @@ public interface IDireccion  extends JpaRepository<Direccion, String>{
     @Transactional
     @Query(value="delete from tb_direccion d where d.id_direc = :id_direc", nativeQuery=true)
     void deleteDirecByIdDirec(String id_direc);
+    
+    @Query(value="select id_direc from tb_direccion order by id_direc desc limit 1", nativeQuery=true)
+    String getLastCodigo();
 }

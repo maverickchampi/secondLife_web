@@ -16,4 +16,7 @@ public interface IBoleta extends JpaRepository<Boleta, String>{
 	List<Boleta> findByUsua(String usua);
 	
 	Boleta findByNumBol(String numBol);
+	
+	@Query(value="select num_bol from tb_boleta order by num_bol desc limit 1", nativeQuery=true)
+    String getLastCodigo();
 }

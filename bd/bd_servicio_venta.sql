@@ -295,7 +295,7 @@ end$$
 delimiter ; 
 /*----------------tabla detalle de boleta----------------*/
 create table tb_detalle_boleta(
-	num_det_bol CHAR(6) not null,
+	num_det_bol CHAR(6) null,
 	num_bol  CHAR(8) not null,
 	id_prod char(5) not null,
 	cant_prod  int not null,
@@ -306,7 +306,7 @@ alter table tb_detalle_boleta
     add constraint FKdetalbol_bol foreign key (num_bol) references tb_boleta (num_bol),
     add constraint FKdetalbol_prod foreign key (id_prod) references tb_producto(id_prod),
     add constraint CKdetalbol_cant check (cant_prod>=1),
-    add constraint CKdetalbol_sub check (sub_tot>=0.0 and sub_tot<=5000);    
+    add constraint CKdetalbol_sub check (sub_tot>=0);    
 delimiter $$
 create trigger tg_insertar_iddetalleboleta
 before insert on tb_detalle_boleta
@@ -720,3 +720,4 @@ create table authorities(
 	username varchar(50),
     authority varchar(50)
 );
+

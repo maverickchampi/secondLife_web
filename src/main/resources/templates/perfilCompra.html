@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>
+
+<head th:replace="layout/layout::head"></head>
+
+<body>
+    <header th:replace="layout/layout::header"></header>
+
+    <!-- ========================= SECTION  ======================= -->
+    <section class="header-main border-0 back-color-light mb-4 mt-4">
+        <div class="container">
+            <div class="row p-3 m-1  border rounded">
+                <div class="col-md-12 col-lg-12 col-sm-12 order-md-1">
+                    <div class="row">
+                        <div class="col-3 col-lg-1 col-md-2 col-sm-2 order-md-1 text-md-right p-0">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <div class="col-9 col-lg-11 col-md-10 col-sm-10 order-md-2 text-md-left pt-3">
+                            <span>HOLA</span>
+                            <p th:text="${user.nom_usua} + ' ' + ${user.ape_usua}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center menu">
+                <div class="col-12 col-md-12 col-lg-12 col-sm-12 order-md-2 perfil">
+                    <div class="tab-content perfil" id="nav-tabContent">
+                         <!-- ====================================-DATOS PERSONALES ==================================== -->
+                        <div class="tab-pane fade show active" id="list-personal" role="tabpanel" aria-labelledby="list-personal-list">
+                               
+                                <div class="row ">
+                                        <div class="col-md-6">
+					                        <tbody>
+												<div class="table-shopping__tr" th:each="p:${verCarrito}"  style="padding: 10px;border: 1px solid black;">
+													<td class="column-product">
+														<figure class="itemside">
+															<div class="aside2"><img
+																	th:src="${p.imagen}"
+																	class="img-sm img-shopping"></div>
+															<figcaption class="info">
+																<a th:href="@{'/producto/' + ${p.codigo}}" class="title text-dark" th:text="${p.descripcion}"></a>
+																<p class="text-muted small" th:text="${p.marca}"></p>
+															</figcaption>
+														</figure>
+													</td>
+													<td>
+														<span th:text="${p.cantidad} + ' ud.'"></span>
+													</td>
+													<td>
+														<div class="price-wrap">
+															<span th:text="'S/. ' + ${p.subtotal}"></span>
+															<small class="text-muted" th:text="' ( S/. ' + ${p.precio} + ' unidad )'">  </small>
+														</div> <!-- price-wrap .// -->
+													</td>
+												</div>
+											</tbody>
+                                        </div> 
+                                        <div class="col-md-6">
+	                                        <div class="resumen">
+	                                            <label for="" class="col-form-label-sm" style="color: #fff;">Total pagado</label>
+	                                            <span class="precio-total" th:text="'S/. ' + ${boleta.total_bol}"></span>
+	                                          </div>
+	                                          <div class="resumen-box">
+	                                            <label for="" class="col-form-label-sm">Envio : </label>
+	                                            <span>S/.0 (GRATIS)</span>
+	                                          </div> 
+	                                           <div class="resumen-box">
+	                                            <label for="" class="col-form-label-sm">Usuario : </label>
+	                                            <span th:text="${user.nom_usua} + ' ' + ${user.ape_usua}"></span>
+	                                          </div>
+	                                           <div class="resumen-box">
+	                                            <label for="" class="col-form-label-sm">Fecha : </label>
+	                                            <span th:text="${boleta.fec_bol}"></span>
+	                                          </div>
+                                        </div>
+                                </div>
+                               
+                                <div class="container-personal-noti border rounded">
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <a th:href="@{/perfil}" class="btn btn-primary">Volver</a>
+                                        </div> 
+                                    </div>                           
+                                </div>
+                        </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    
+    <!-- ========================= SECTION  END// ======================= -->
+    
+    <footer th:replace="layout/layout::footer-2"></footer>
+    
+</body>
+</html>

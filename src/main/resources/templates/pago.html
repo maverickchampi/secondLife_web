@@ -57,7 +57,7 @@
                                             		<label for="" class="col-form-label-sm" style="display:block;">Seleccione una dirección</label>
                                             		<select class="form-control" id="direccion-boleta">
 															<option th:each="d:${direcciones}" 
-															th:value="${d.id_direc}" 
+															th:value="${d.idDirec}" 
 															th:text="${d.desc_direc} + ' ( ' + ${d.etiqueta} + ' )'" 
 															h:data = "${d.id_direc}"></option>
 													</select>

@@ -1,8 +1,13 @@
 package secondlife.com.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -10,7 +15,8 @@ import javax.persistence.Table;
 @Table(name="tb_boleta")
 public class Boleta {
 	@Id
-	private String num_bol;
+	@Column(name = "num_bol")
+	private String numBol;
 	@Column(name = "id_usua")
 	private String usua;
 	private int tipo_pago;
@@ -20,12 +26,20 @@ public class Boleta {
 	private double impo_bol;
 	private double envio;
 	private double total_bol;
+	@OneToMany(mappedBy="boleta",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<DetalleBoleta> detalle_boleta;
 	
-	public String getNum_bol() {
-		return num_bol;
+	public List<DetalleBoleta> getDetalle_boleta() {
+		return detalle_boleta;
 	}
-	public void setNum_bol(String num_bol) {
-		this.num_bol = num_bol;
+	public void setDetalle_boleta(List<DetalleBoleta> detalle_boleta) {
+		this.detalle_boleta = detalle_boleta;
+	}
+	public String getNumBol() {
+		return numBol;
+	}
+	public void setNumBol(String numBol) {
+		this.numBol = numBol;
 	}
 	public String getUsua() {
 		return usua;

@@ -47,7 +47,7 @@
                                     <i class="bi bi-key"></i>
                                 </div>
                                 <div class="col-6 col-lg-8 col-md-7 col-sm-6 p-2">
-                                    <span>Datos mi cuenta</span>
+                                    <span>Mis direcciones</span>
                                 </div>
                                 <div class="col-3 col-lg-2 col-md-2 col-sm-3">
                                     <i class="bi bi-chevron-right"></i>
@@ -164,53 +164,46 @@
                         </div>
                          <!--  ====================================CAMBIO DE DATOS DEL USUARIO ==================================== -->
                         <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
-                            <form action="" method="get">
-                                <div class="container-personal user p-4 border rounded">
+                              <div class="container-personal buy p-4 border rounded">
+                                <div class="card-body pt-3 pb-0 mt-n3">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h5>Datos de ingreso</h5>
-                                                    <label for="usuario" class="col-form-label-sm"> Usuario</label>
-                                                    <input type="text" class="form-control form-control-sm border-secondary" id="" value="Mauricio1123" required> 
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="email" class="col-form-label-sm"> Email</label>
-                                                    <input type="text" class="form-control form-control-sm border-secondary" id="" value="example@gmail.com" required> 
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-md-6 text-center">
-                                            <img src="https://i.ibb.co/V9Ntymz/profile.png" class="figure-img img-fluid rounded">
-                                        </div> 
-                                    </div>
-                                    <div class="row ">
-                                        <div class="col-md-6">
-                                            <label for="" class="col-form-label-sm"> Contraseña actual</label>
-                                            <div class="input-group" id="show_hide_password">
-                                                <input class="form-control form-control-sm border-secondary" type="password">
-                                                <div class="input-group-addon">
-                                                  <a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div> 
-                                        </div> 
-                                        <div class="col-md-6">
-                                            <label for="" class="col-form-label-sm"> Contraseña nueva</label>
-                                            <div class="input-group" id="show_hide_password">
-                                                <input class="form-control form-control-sm border-secondary" type="password">
-                                                <div class="input-group-addon">
-                                                  <a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-7 text-left">
+                                            <h5 class="m-0 p-0"> Mis direcciones</h5>
+                                            <span class="col-form-label-sm" th:text="${direcciones.size} + ' compras'"></span>
+                                        </div>
+                                        <div class="col-12 col-lg-5 col-md-8 col-sm-8 text-right">
+                                            <ul class="list-group list-group-horizontal pl-3">
+                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" th:href="@{/perfil-direccion/new}">Agregar nueva dirección</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12 text-right mt-5">
-                                            <input type="submit" class="btn save" value="Cambiar datos">
-                                        </div> 
-                                    </div> 
+                                        <div class="col-md-12 text-center p-3">
+                                            <table class="table table-bordersell">
+                                                <tbody>
+                                                    <tr class="table_list" th:each="d:${direcciones}">
+                                                        <th class="text-left" scope="row">·</th>
+                                                        <td class="text-left">
+                                                            <p class="p-0 m-0" th:text="'Id ' + ${d.idDirec}"></p>
+                                                        </td>
+                                                        <td class="text-right state">Válido</td>
+                                                        <td class="text-right">
+                                                            <p class="p-0 m-0" th:text="'Descripción : ' + ${d.desc_direc}"></p>
+                                                            <span class="p-0 m-0" th:text="'Etiqueta : ' + ${d.etiqueta}"></span>
+                                                        </td>
+                                                        <td class="text-right">
+                                                        <a th:href="@{'/perfil-direccion/' + ${d.idDirec}}" class="text-right"><i class="bi bi-arrow-right-square-fill" style="vertical-align: middle;"></i></a>
+                                                        <form th:action="@{'/direccionDelete/' + ${d.idDirec}}" method="post" style="display: contents">
+                                                        	<button class="btn btn-danger">X</button>
+                                                        </form>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>   
                         </div>
                          <!--  ====================================LISTA DE COMPRAS ==================================== -->
                         <div class="tab-pane fade " id="list-buy" role="tabpanel" aria-labelledby="list-buy-list">
@@ -219,13 +212,11 @@
                                     <div class="row">
                                         <div class="col-md-7 text-left">
                                             <h5 class="m-0 p-0"> Compras</h5>
-                                            <span class="col-form-label-sm">5 compras</span>
+                                            <span class="col-form-label-sm" th:text="${compras.size} + ' compras'"></span>
                                         </div>
-                                        <div class="col-md-5 text-right">
+                                        <div class="col-12 col-lg-5 col-md-8 col-sm-8 text-right">
                                             <ul class="list-group list-group-horizontal pl-3">
-                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" href="">Diario</a></li>
-                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" href="">Semanal</a></li>
-                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" href="">Mes</a></li>
+                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" th:href="@{/productos}">Realizar nueva compra</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -233,70 +224,20 @@
                                         <div class="col-md-12 text-center p-3">
                                             <table class="table table-bordersell">
                                                 <tbody>
-                                                    <tr class="table_list">
-                                                        <th class="text-left" scope="row">1</th>
+                                                    <tr class="table_list" th:each="c:${compras}">
+                                                        <th class="text-left" scope="row">·</th>
                                                         <td class="text-left">
-                                                            <p class="p-0 m-0">Productos electrónicos</p>
-                                                            <span class="p-0 m-0">otros</span>
+                                                            <p class="p-0 m-0" th:text="'Nro ' + ${c.numBol}"></p>
+                                                            <span class="p-0 m-0"  th:text="'Fecha : ' + ${c.fec_bol}"></span>
                                                         </td>
-                                                        <td class="text-right state">Enviado</td>
+                                                        <td class="text-right state">Comprado</td>
                                                         <td class="text-right">
-                                                            <p class="p-0 m-0">S/. 250</p>
-                                                            <span class="p-0 m-0">5 productos</span>
+                                                            <p class="p-0 m-0" th:text="'Importe : S/. ' + ${c.impo_bol}"></p>
+                                                            <span class="p-0 m-0">Envío gratis</span>
                                                         </td>
-                                                        <td class="text-right"><i class="bi bi-arrow-right-square-fill"></i></td>
-                                                    </tr>
-                                                    <tr class="table_list">
-                                                        <th class="text-left" scope="row">2</th>
-                                                        <td class="text-left">
-                                                            <p class="p-0 m-0">Productos electrónicos</p>
-                                                            <span class="p-0 m-0">otros</span>
-                                                        </td>
-                                                        <td class="text-right state">Enviado</td>
                                                         <td class="text-right">
-                                                            <p class="p-0 m-0">S/. 250</p>
-                                                            <span class="p-0 m-0">5 productos</span>
+                                                        <a th:href="@{'/perfil-compra/' + ${c.numBol}}" class="text-right"><i class="bi bi-arrow-right-square-fill"></i></a>
                                                         </td>
-                                                        <td class="text-right"><i class="bi bi-arrow-right-square-fill"></i></td>
-                                                    </tr>
-                                                    <tr class="table_list">
-                                                        <th class="text-left" scope="row">3</th>
-                                                        <td class="text-left">
-                                                            <p class="p-0 m-0">Productos electrónicos</p>
-                                                            <span class="p-0 m-0">otros</span>
-                                                        </td>
-                                                        <td class="text-right state">Enviado</td>
-                                                        <td class="text-right">
-                                                            <p class="p-0 m-0">S/. 250</p>
-                                                            <span class="p-0 m-0">5 productos</span>
-                                                        </td>
-                                                        <td class="text-right"><i class="bi bi-arrow-right-square-fill"></i></td>
-                                                    </tr>
-                                                    <tr class="table_list">
-                                                        <th class="text-left" scope="row">4</th>
-                                                        <td class="text-left">
-                                                            <p class="p-0 m-0">Productos electrónicos</p>
-                                                            <span class="p-0 m-0">otros</span>
-                                                        </td>
-                                                        <td class="text-right state">Enviado</td>
-                                                        <td class="text-right">
-                                                            <p class="p-0 m-0">S/. 250</p>
-                                                            <span class="p-0 m-0">5 productos</span>
-                                                        </td>
-                                                        <td class="text-right"><i class="bi bi-arrow-right-square-fill"></i></td>
-                                                    </tr>
-                                                    <tr class="table_list">
-                                                        <th class="text-left" scope="row">5</th>
-                                                        <td class="text-left">
-                                                            <p class="p-0 m-0">Productos electrónicos</p>
-                                                            <span class="p-0 m-0">otros</span>
-                                                        </td>
-                                                        <td class="text-right state">Enviado</td>
-                                                        <td class="text-right">
-                                                            <p class="p-0 m-0">S/. 250</p>
-                                                            <span class="p-0 m-0">5 productos</span>
-                                                        </td>
-                                                        <td class="text-right"><i class="bi bi-arrow-right-square-fill"></i></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -403,8 +344,44 @@
                          <!-- - ====================================-METODOS DE PAGO- ====================================-->
                         <div class="tab-pane fade" id="list-pay" role="tabpanel" aria-labelledby="list-pay-list">
                             <div class="container-personal buy p-4 border rounded">
-
-                            </div>
+                                <div class="card-body pt-3 pb-0 mt-n3">
+                                    <div class="row">
+                                        <div class="col-md-7 text-left">
+                                            <h5 class="m-0 p-0"> Mis métodos de pago</h5>
+                                            <span class="col-form-label-sm" th:text="${tarjetas.size} + ' compras'"></span>
+                                        </div>
+                                        <div class="col-12 col-lg-5 col-md-8 col-sm-8 text-right">
+                                            <ul class="list-group list-group-horizontal pl-3">
+                                               <li class="list-group-item p-1"><a class="btn btn-primary border-0" th:href="@{/perfil-metodo/new}">Agregar nuevo método de pago</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-center p-3">
+                                            <table class="table table-bordersell">
+                                                <tbody>
+                                                    <tr class="table_list" th:each="t:${tarjetas}">
+                                                        <th class="text-left" scope="row">·</th>
+                                                        <td class="text-left">
+                                                            <p class="p-0 m-0" th:text="'ID ' + ${t.id_tarj}"></p>
+                                                        </td>
+                                                        <td class="text-right state">Válida</td>
+                                                        <td class="text-right">
+                                                            <span class="p-0 m-0"  th:text="'Tipo : ' + ${t.tip_tarj}"></span>
+                                                        </td>
+                                                        <td class="text-right">
+                                                        <a th:href="@{'/perfil-metodo/' + ${t.id_tarj}}" class="text-right"><i class="bi bi-arrow-right-square-fill" style="vertical-align: middle;"></i></a>
+                                                        <form th:action="@{'/metodoDelete/' + ${t.id_tarj}}" method="post" style="display: contents">
+                                                        	<button class="btn btn-danger">X</button>
+                                                        </form>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
                         </div>
                     </div>
                 </div>

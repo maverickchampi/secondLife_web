@@ -1,8 +1,11 @@
 package secondlife.com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -11,23 +14,34 @@ import javax.persistence.Table;
 public class DetalleBoleta {
 	@Id
 	private String num_det_bol;
-	private String num_bol;
+
+	@Column(name = "num_bol")
+	private String numBol;
 	@Column(name = "id_prod")
 	private String probBole;
 	private int cant_prod;
-	private double sub_tot;
+	@Column(name = "sub_tot")
+	private double subTot;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Boleta boleta;
 	
+	public Boleta getBoleta() {
+		return boleta;
+	}
+	public void setBoleta(Boleta boleta) {
+		this.boleta = boleta;
+	}
 	public String getNum_det_bol() {
 		return num_det_bol;
 	}
 	public void setNum_det_bol(String num_det_bol) {
 		this.num_det_bol = num_det_bol;
 	}
-	public String getNum_bol() {
-		return num_bol;
+	public String getNumBol() {
+		return numBol;
 	}
-	public void setNum_bol(String num_bol) {
-		this.num_bol = num_bol;
+	public void setNumBol(String numBol) {
+		this.numBol = numBol;
 	}
 	public String getProbBole() {
 		return probBole;
@@ -41,11 +55,11 @@ public class DetalleBoleta {
 	public void setCant_prod(int cant_prod) {
 		this.cant_prod = cant_prod;
 	}
-	public double getSub_tot() {
-		return sub_tot;
+	public double getSubTot() {
+		return subTot;
 	}
-	public void setSub_tot(double sub_tot) {
-		this.sub_tot = sub_tot;
+	public void setSubTot(double subTot) {
+		this.subTot = subTot;
 	}
 
 }

@@ -10,7 +10,8 @@ import javax.persistence.Table;
 public class Direccion {
 	
 	@Id
-	private String id_direc;	
+	@Column(name = "id_direc")
+	private String idDirec;	
     private double latitud;    
     private double longitud;    
     private String desc_direc;    
@@ -20,16 +21,19 @@ public class Direccion {
     private String usuar;
 
     /*-------Getters and Setters-----------*/
-	public String getId_direc() {
-		return id_direc;
-	}
-
-	public void setId_direc(String id_direc) {
-		this.id_direc = id_direc;
-	}
+	
+	
 
 	public double getLatitud() {
 		return latitud;
+	}
+
+	public String getIdDirec() {
+		return idDirec;
+	}
+
+	public void setIdDirec(String idDirec) {
+		this.idDirec = idDirec;
 	}
 
 	public void setLatitud(double latitud) {

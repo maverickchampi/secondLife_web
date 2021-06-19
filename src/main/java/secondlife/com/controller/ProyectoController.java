@@ -15,7 +15,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -240,8 +239,14 @@ public class ProyectoController {
 				System.out.println(a.getAuthority());
 			}
 		}
+		
+		Usuario u =  iu.findByUsuario(auto.getName());
+
+		model.addAttribute("tarjetas",it.findByUsuari(u.getId_usua()));
+		model.addAttribute("direcciones",idir.findByUsuar(u.getId_usua()));
+		model.addAttribute("compras",ib.findByUsua(u.getId_usua()));
 		model.addAttribute("carrito", carrito);
-		model.addAttribute("user", iu.findByUsuario(auto.getName()));
+		model.addAttribute("user",u);
 		return "perfil";
 	}
 	
@@ -287,7 +292,10 @@ public class ProyectoController {
 		}
 		
 		iu.save(user);
-		
+
+		model.addAttribute("tarjetas",it.findByUsuari(user.getId_usua()));
+		model.addAttribute("direcciones",idir.findByUsuar(user.getId_usua()));
+		model.addAttribute("compras",ib.findByUsua(user.getId_usua()));
 		model.addAttribute("carrito", carrito);
 		model.addAttribute("user", user);
 		return "perfil";
@@ -299,7 +307,6 @@ public class ProyectoController {
 		if (principal != null) {
 			return "redirect:/perfil";
 		}
-		model.addAttribute("carrito", carrito);
 		model.addAttribute("carrito", carrito);
 		return "login";
 	}
@@ -371,11 +378,10 @@ public class ProyectoController {
 		model.addAttribute("carrito", carrito);
 		return "pago";
 	}
-	
-	@Transactional
+
 	@PostMapping("/pago")
 	public String pagoPost(Boleta bol, Model model,@ModelAttribute("carrito")ArrayList<DetalleBoleta> carrito) {
-		bol.setNum_bol("");
+		bol.setNumBol("");
 		bol.setTipo_pago(1);
 		
 		Date date = new Date();
@@ -389,16 +395,21 @@ public class ProyectoController {
 		
 		String codigoBoleta = ib.getLastNum(bol.getUsua());
 		
-		for(DetalleBoleta db : carrito) {
+		for(int i = 0; i < carrito.size();i++) {
+			DetalleBoleta db = carrito.get(i);
 			Producto p = ip.findByProd(db.getProbBole());
+			p.setStock(p.getStock()-db.getCant_prod());
 			
-			db.setNum_bol(codigoBoleta);
-			db.setNum_det_bol("");
-			db.setSub_tot(db.getCant_prod() * p.getPrecio());
+			db.setNumBol(codigoBoleta);
+			db.setNum_det_bol(i + "");
 			
-			idb.save(db);
+			db.setSubTot(db.getCant_prod() * p.getPrecio());
+			
+			ip.save(p); // producto para descontar cantidades
+			
+			idb.save(db);// detalle boleta
 		}
-		
+	    
 		Iterator<DetalleBoleta> productosIterator = carrito.iterator();
         while (productosIterator.hasNext()) {
         	productosIterator.next();
@@ -411,7 +422,7 @@ public class ProyectoController {
 	
 	@PostMapping("/direccionPago")
 	public String direccionPago(Direccion dir,Model model) {
-		dir.setId_direc("");
+		dir.setIdDirec("");
 		dir.setLatitud(0);
 		dir.setLongitud(0);
 		idir.save(dir);
@@ -436,6 +447,140 @@ public class ProyectoController {
 		it.save(tar);
 		model.addAttribute("carrito", carrito);
 		return "redirect:/pago";
+	}
+	
+	@GetMapping("/perfil-direccion/{id}")
+	public String perfilDir(@PathVariable String id, Model model, Principal principal) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication auto = context.getAuthentication();
+		if (auto == null) {
+			return "index";
+		}
+		Usuario u =  iu.findByUsuario(auto.getName());
+
+		if(id.equals("new") == false) {
+			model.addAttribute("dir",idir.findByIdDirec(id));
+		}else {
+			model.addAttribute("dir",new Direccion());
+		}
+		
+		model.addAttribute("distritos",idis.findAll());
+		model.addAttribute("user",u);
+		model.addAttribute("carrito", carrito);
+		return "perfilDireccion";
+	}
+	
+	@PostMapping("/direccionDelete/{id}")
+	public String direccionDelete(@PathVariable String id,Model model) {
+		
+		idir.deleteDirecByIdDirec(id);
+		
+		model.addAttribute("carrito", carrito);
+		return "redirect:/perfil";
+	}
+	
+	@PostMapping("/perfil-direccion")
+	public String direccionPost(Direccion dir,Model model) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication auto = context.getAuthentication();
+		if (auto == null) {
+			return "index";
+		}
+		Usuario u =  iu.findByUsuario(auto.getName());
+		
+		dir.setLatitud(0);
+		dir.setLongitud(0);
+		dir.setUsuar(u.getId_usua());
+		idir.save(dir);
+		
+		model.addAttribute("carrito", carrito);
+		return "redirect:/perfil";
+	}
+	
+	@GetMapping({"/perfil-compra/{id}"})
+	public String perfilCom(@PathVariable String id, Model model, Principal principal) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication auto = context.getAuthentication();
+		if (auto == null) {
+			return "index";
+		}
+		Usuario u =  iu.findByUsuario(auto.getName());
+
+		ArrayList<Carrito> verCarrito = new ArrayList<Carrito>();
+		for(DetalleBoleta db : idb.findByNumBol(id)) {
+			
+			Producto p = ip.findByProd(db.getProbBole());
+			Carrito c = new Carrito();
+			c.setCodigo(p.getProd());
+			c.setDescripcion(p.getMod_prod());
+			c.setMarca(p.getMar_prod());
+			c.setImagen(p.getImage());
+			c.setPrecio(p.getPrecio());
+			c.setCantidad(db.getCant_prod());
+			c.setSubtotal(c.getPrecio() * c.getCantidad());
+			verCarrito.add(c);
+		}
+		
+		
+		model.addAttribute("boleta",ib.findByNumBol(id));
+		model.addAttribute("verCarrito",verCarrito);
+		model.addAttribute("user",u);
+		model.addAttribute("carrito", carrito);
+		return "perfilCompra";
+	}
+	
+	@GetMapping("/perfil-metodo/{id}")
+	public String perfilMet(@PathVariable String id, Model model, Principal principal) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication auto = context.getAuthentication();
+		if (auto == null) {
+			return "index";
+		}
+		Usuario u =  iu.findByUsuario(auto.getName());
+
+		if(id.equals("new") == false) {
+			model.addAttribute("met",it.findByIdTarj(id) );
+		}else {
+			model.addAttribute("met",new Tarjeta());
+		}
+		
+		model.addAttribute("user",u);
+		model.addAttribute("carrito", carrito);
+		return "perfilMetodo";
+	}
+	
+	@PostMapping("/perfil-metodo")
+	public String metodonPost(Tarjeta tar,Model model) {
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication auto = context.getAuthentication();
+		if (auto == null) {
+			return "index";
+		}
+		Usuario u =  iu.findByUsuario(auto.getName());
+		
+		String tarjeta ="";
+		if(tar.getNum_tarj().charAt(0) == '4') {
+			tarjeta="Visa";
+		}else if (tar.getNum_tarj().charAt(0) == '5') {
+			tarjeta= "Mastercard";
+		}else {
+			tarjeta="Desconocido";
+		}
+		tar.setTip_tarj(tarjeta);
+		tar.setUsuari(u.getId_usua());
+		it.save(tar);
+		
+		model.addAttribute("carrito", carrito);
+		return "redirect:/perfil";
+	}
+	
+	@PostMapping("/metodoDelete/{id}")
+	public String metodoDelete(@PathVariable String id,Model model) {
+		
+		it.deleteDirecByIdTarj(id);
+		
+		model.addAttribute("carrito", carrito);
+		return "redirect:/perfil";
 	}
 	
 	@GetMapping("/cotizar")

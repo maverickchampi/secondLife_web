@@ -35,6 +35,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/cotizar/**").hasAnyAuthority("cliente")
 				.antMatchers("/pago/**").hasAnyAuthority("cliente")
 				.antMatchers("/tarjetaPago/**").hasAnyAuthority("cliente")
+				.antMatchers("/perfil-direccion/{id}**").hasAnyAuthority("cliente")
+				.antMatchers("/perfil-compra/{id}**").hasAnyAuthority("cliente")
+				.antMatchers("/perfil-metodo/{id}**").hasAnyAuthority("cliente")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.permitAll();
 	}

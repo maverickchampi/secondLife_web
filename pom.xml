@@ -15,7 +15,7 @@
 	<name>second_life</name>
 	<description>Proyecto de ventas de productos electrónicos de segunda mano</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 	

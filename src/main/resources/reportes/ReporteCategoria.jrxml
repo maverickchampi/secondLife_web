@@ -1,119 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCategoria" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ced95029-b569-4027-895c-af2843a4e088">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCategoria" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d4a1d5eb-82dd-412f-a620-202e4bdf9dba">
+	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nube_BD"/>
-	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
-	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
-	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
-	<style name="Detail" fontName="Arial" fontSize="12"/>
-	<style name="Row" mode="Transparent">
-		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#E6DAC3"/>
-		</conditionalStyle>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
 	</style>
-	<queryString language="SQL">
-		<![CDATA[select id_categ,nom_categ,descrip_categ from tb_categoria]]>
+	<style name="Table_TH" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Transparent" forecolor="#B89F7D" backcolor="#70A9C6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tableDataset" uuid="b0208a2c-396d-4f81-93fb-130928e8664b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nube_BD"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tb_categoria]]>
+		</queryString>
+		<field name="id_categ" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="id_categ"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
+		</field>
+		<field name="nom_categ" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="nom_categ"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
+		</field>
+		<field name="descrip_categ" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="descrip_categ"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
+		</field>
+		<field name="estado" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="estado"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
 	</queryString>
-	<field name="id_categ" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="id_categ"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
-	</field>
-	<field name="nom_categ" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nom_categ"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
-	</field>
-	<field name="descrip_categ" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="descrip_categ"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tb_categoria"/>
-	</field>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<title>
-		<band height="136" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="164" height="126" uuid="ddc15723-2728-421f-b95e-2df9faf64ce1"/>
-				<imageExpression><![CDATA["https://i.ibb.co/NCTjMms/logo-icon.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement style="Title" x="170" y="0" width="263" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Second Life]]></text>
-			</staticText>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="6321f5e3-86eb-444f-acc1-8daaaa0d6c60"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="9e48917a-7b59-4ffd-baad-725f45563194"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SecondLife]]></text>
+				</staticText>
+			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band splitType="Stretch"/>
+		<band height="13"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="16" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#736343" uuid="16704181-1143-4af9-9b15-7cacebb663ca">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c201ae24-4ffd-4da6-8a45-9ca8fa1686e7"/>
-				</reportElement>
-				<text><![CDATA[id_categ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#736343" uuid="0b7b475c-58aa-4cf4-946d-e1dd5a8ce144">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63034a62-fd0e-48e2-b776-fe557780d209"/>
-				</reportElement>
-				<text><![CDATA[nom_categ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#736343" uuid="66b27980-67c4-4551-8078-afca55c7ae81">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21adeddc-d952-4291-ae81-902963cf03ac"/>
-				</reportElement>
-				<text><![CDATA[descrip_categ]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="15" splitType="Stretch">
-			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="a98495d8-3c8d-4fa0-81f5-30c3efc2f766"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="527fa69e-2512-4cfc-adb1-a5e9d3b82001">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c201ae24-4ffd-4da6-8a45-9ca8fa1686e7"/>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{id_categ}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="4486a4ec-da08-4809-adda-5ea443fbe733">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63034a62-fd0e-48e2-b776-fe557780d209"/>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{nom_categ}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="f34347e8-c1fb-4e17-be49-ebc9db7ad79b">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21adeddc-d952-4291-ae81-902963cf03ac"/>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{descrip_categ}]]></textFieldExpression>
-				</textField>
-			</frame>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fa45a887-615a-4d84-a2d7-8a2219671b3c"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
-	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch"/>
+		<band height="17"/>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="200" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="200" uuid="28620e9f-3801-435a-88ad-ab0ea6134654">
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tableDataset" uuid="6a93a720-e7fd-4a6b-9d2b-799b2457c476">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="07bb5c80-ba54-4153-83fd-2437fd32c9dc">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#006699" backcolor="#E6E6E6" uuid="d306b374-18e5-4233-8857-16383317cd05"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[id_categ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement key="" x="0" y="0" width="90" height="30" uuid="fb7b072c-da10-46e1-a15e-eb9b5b4082c9"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{id_categ}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ef318565-0478-476e-86cd-ab20f57b642c">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#006699" backcolor="#E6E6E6" uuid="ef8f5513-1319-46df-8d7b-90edacff43bf"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[nom_categ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement key="" x="0" y="0" width="90" height="30" uuid="1b46d299-ef03-42f7-92a2-337b40dd859e"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nom_categ}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="cd61aead-fad5-4956-a746-d643a7dc1302">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#006699" backcolor="#E6E6E6" uuid="8cf92427-4c6e-40e9-9071-b03230de43e0"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[descrip_categ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement key="" x="0" y="0" width="90" height="30" uuid="a07a662f-1f6e-427c-b0d2-ec4435a38106"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descrip_categ}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="d81f07bc-ce18-4965-bdb9-1798d7f9eeac">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#006699" backcolor="#E6E6E6" uuid="e39cd2bc-b311-4c31-92a7-731335eebc66"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[estado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement key="" x="0" y="0" width="90" height="30" uuid="6a147139-3a8e-4656-b7f7-8b51fbd0bed1"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
 	</summary>
 </jasperReport>

@@ -231,14 +231,15 @@ public class ProyectoController {
 		Authentication auto = context.getAuthentication();
 		if (auto == null) {
 			return "index";
-		} else {
-			Collection<? extends GrantedAuthority> authorities = auto.getAuthorities();
+		} 
+//		else {
+//			Collection<? extends GrantedAuthority> authorities = auto.getAuthorities();
 
-			for (GrantedAuthority a : authorities) {
-				System.out.println(auto.getName());
-				System.out.println(a.getAuthority());
-			}
-		}
+//			for (GrantedAuthority a : authorities) {
+//				System.out.println(auto.getName());
+//				System.out.println(a.getAuthority());
+//			}
+//		}
 		
 		Usuario u =  iu.findByUsuario(auto.getName());
 
@@ -406,6 +407,7 @@ public class ProyectoController {
 		for(int i = 0; i < carrito.size();i++) {
 			DetalleBoleta db = carrito.get(i);
 			Producto p = ip.findByProd(db.getProbBole());
+			
 			p.setStock(p.getStock()-db.getCant_prod());
 			
 			db.setNumBol(codigoBoleta);
@@ -640,18 +642,6 @@ public class ProyectoController {
 		
 		model.addAttribute("carrito", carrito);
 		return "redirect:/perfil";
-	}
-	
-	@GetMapping("/cotizar")
-	public String cotizar( Model model) {
-		model.addAttribute("carrito", carrito);
-		return "cotizar";
-	}
-
-	@GetMapping("/admin")
-	public String admin( Model model) {
-		model.addAttribute("carrito", carrito);
-		return "admin";
 	}
 
 	

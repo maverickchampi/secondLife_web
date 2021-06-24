@@ -14,7 +14,7 @@
 		</conditionalStyle>
 	</style>
 	<queryString language="SQL">
-		<![CDATA[select id_categ,nom_categ,descrip_categ from tb_categoria]]>
+		<![CDATA[select id_categ, nom_categ,descrip_categ from tb_categoria]]>
 	</queryString>
 	<field name="id_categ" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="id_categ"/>
@@ -34,27 +34,13 @@
 	<title>
 		<band height="136" splitType="Stretch">
 			<image>
-				<reportElement x="620" y="0" width="164" height="126" uuid="1c003177-754c-448f-8ce1-16868856f545"/>
+				<reportElement x="637" y="0" width="164" height="126" uuid="1c003177-754c-448f-8ce1-16868856f545"/>
 				<imageExpression><![CDATA["https://i.ibb.co/NCTjMms/logo-icon.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="2" y="0" width="263" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<reportElement style="Title" x="0" y="0" width="263" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Second Life]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
-				<textElement>
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="172" y="94" width="383" height="42" uuid="8240065e-64b6-4170-b5d9-6341598e7b35"/>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[]]></text>
+				<text><![CDATA[SecondLife]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -66,24 +52,24 @@
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
 				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#000000"/>
+					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="267" height="15" forecolor="#736343" uuid="9ed5d8bf-18fb-4f38-af86-71cdc8d8ce1e">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="541224a7-242f-4bd5-80fc-0ef086f0cba4"/>
+				<reportElement style="Column header" x="0" y="0" width="267" height="15" forecolor="#736343" uuid="faaa2b8f-8282-423d-acab-963eccd6c146">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3b3f5f6c-237c-47f0-a4cc-365df1258304"/>
 				</reportElement>
 				<text><![CDATA[Id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="267" y="0" width="267" height="15" forecolor="#736343" uuid="0fab5fb8-bd71-49cf-a372-f6fb1b6cec94">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b65dc7db-df2c-45b0-842e-f2850cafedf4"/>
+				<reportElement style="Column header" x="267" y="0" width="267" height="15" forecolor="#736343" uuid="7e58bc27-47ef-4dc3-8187-b67611dc85d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3bc3178-d9db-434c-a608-991544e91559"/>
 				</reportElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="534" y="0" width="267" height="15" forecolor="#736343" uuid="1d9a8681-42e7-444f-a953-2c9953914f8f">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1714124f-703b-462a-b4d3-78119108fc70"/>
+				<reportElement style="Column header" x="534" y="0" width="267" height="15" forecolor="#736343" uuid="8e14e2bc-0df0-4f3d-afcb-0b4e4f5a2658">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="518ee3cc-0ba4-411c-b8e4-74a8cd4227bb"/>
 				</reportElement>
 				<text><![CDATA[Descripción]]></text>
 			</staticText>
@@ -94,24 +80,24 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="267" height="15" uuid="6799a509-3e7a-454b-8f00-fe9d859bbd74">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="541224a7-242f-4bd5-80fc-0ef086f0cba4"/>
+					<reportElement style="Detail" x="0" y="0" width="267" height="15" uuid="332693d6-ab11-4cb1-986e-ee68e1e4e022">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3b3f5f6c-237c-47f0-a4cc-365df1258304"/>
 					</reportElement>
 					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{id_categ}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="267" y="0" width="267" height="15" uuid="7ce0cce2-6aca-48ce-a03c-5f67c1db93bb">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b65dc7db-df2c-45b0-842e-f2850cafedf4"/>
+					<reportElement style="Detail" x="267" y="0" width="267" height="15" uuid="9f17771b-919d-4cd6-8352-94201bbef402">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3bc3178-d9db-434c-a608-991544e91559"/>
 					</reportElement>
-					<box topPadding="10" leftPadding="0" bottomPadding="10" rightPadding="0"/>
+					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{nom_categ}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="534" y="0" width="267" height="15" uuid="326d8e6b-d429-4a02-82e2-dba9629c3b26">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1714124f-703b-462a-b4d3-78119108fc70"/>
+					<reportElement style="Detail" x="534" y="0" width="267" height="15" uuid="2ba9a7b9-a88f-4352-9d77-35cc9b620034">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="518ee3cc-0ba4-411c-b8e4-74a8cd4227bb"/>
 					</reportElement>
-					<box topPadding="10" leftPadding="0" bottomPadding="10" rightPadding="0"/>
+					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{descrip_categ}]]></textFieldExpression>
 				</textField>
 			</frame>

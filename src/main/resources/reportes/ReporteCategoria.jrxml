@@ -59,19 +59,19 @@
 				<reportElement style="Column header" x="0" y="0" width="185" height="15" forecolor="#736343" uuid="16704181-1143-4af9-9b15-7cacebb663ca">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c201ae24-4ffd-4da6-8a45-9ca8fa1686e7"/>
 				</reportElement>
-				<text><![CDATA[Id]]></text>
+				<text><![CDATA[id_categ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="185" y="0" width="185" height="15" forecolor="#736343" uuid="0b7b475c-58aa-4cf4-946d-e1dd5a8ce144">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63034a62-fd0e-48e2-b776-fe557780d209"/>
 				</reportElement>
-				<text><![CDATA[Nombre]]></text>
+				<text><![CDATA[nom_categ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="370" y="0" width="185" height="15" forecolor="#736343" uuid="66b27980-67c4-4551-8078-afca55c7ae81">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21adeddc-d952-4291-ae81-902963cf03ac"/>
 				</reportElement>
-				<text><![CDATA[Descripción]]></text>
+				<text><![CDATA[descrip_categ]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -83,21 +83,18 @@
 					<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="527fa69e-2512-4cfc-adb1-a5e9d3b82001">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c201ae24-4ffd-4da6-8a45-9ca8fa1686e7"/>
 					</reportElement>
-					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{id_categ}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="4486a4ec-da08-4809-adda-5ea443fbe733">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63034a62-fd0e-48e2-b776-fe557780d209"/>
 					</reportElement>
-					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{nom_categ}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="f34347e8-c1fb-4e17-be49-ebc9db7ad79b">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="21adeddc-d952-4291-ae81-902963cf03ac"/>
 					</reportElement>
-					<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="0"/>
 					<textFieldExpression><![CDATA[$F{descrip_categ}]]></textFieldExpression>
 				</textField>
 			</frame>

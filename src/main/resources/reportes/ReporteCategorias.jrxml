@@ -38,6 +38,10 @@
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[SecondLife]]></text>
 			</staticText>
+			<image>
+				<reportElement x="628" y="10" width="164" height="126" uuid="95068ddb-790c-45cb-835c-7a1a5cc59d4d"/>
+				<imageExpression><![CDATA["https://i.ibb.co/NCTjMms/logo-icon.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

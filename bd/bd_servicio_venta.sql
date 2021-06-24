@@ -121,41 +121,6 @@ alter table tb_direccion
      add constraint FKdirec_usua foreign key(id_usua) references tb_usuario(id_usua),
 	add constraint FKdirec_dist foreign key(id_dist) references tb_distrito(id_dist),
 	add constraint CKdirec_desc check (length(desc_direc)>=4);
-    
-/*---------------- tabla registro ----------------*/
-create table tb_registro (
-	id_regis char(5) not null,
-	id_categ int not null,
-	id_usua char(5) not null,
-	descrip_prod varchar(100) not null,
-	observacion varchar(256),
-	fecha_regis timestamp not null default current_timestamp,
-	stock int not null,
-	precio decimal(8,2) not null,
-    image varchar(256) not null,
-	calidad decimal (4,2) not null,
-	estado int not null
-);
-/* calidad
-		0-3  >> mal estado: inservible, falta de algun componente fisico, daño grave en la pintura y/o cuerpo,
-				software brickeado o bloqueado. (tiempo de uso < 2 años)
-		3-5  >> estado regular: daño en la pintura, cuerpo dañado o software bloqueado. (tiempo de uso < 1 año)
-		5-7  >> estado bueno: ligeros rayones en el cuerpo. (tiempo de uso < 6 meses)
-        7-10 >> estado excelente: practicamente como nuevo sin señales de uso. (tiempo de uso < 3 meses)
-	estado
-		1.- activo (aceptado)
-		2.- desactivo (no aceptado)
-*/
-alter table  tb_registro 
-	add constraint PKregistro primary key(id_regis),
-    add constraint FKregis_categ foreign key (id_categ) references tb_categoria(id_categ),
-    add constraint FKregis_usua foreign key (id_usua) references tb_usuario(id_usua),
-    add constraint CKregis_prod check (length(descrip_prod)>=10 and length(observacion)>=10),
-    add constraint CKregis_prec check (precio>=5.0),
-    add constraint CKregis_stock check (stock>=0 and stock <=100),
-    add constraint CKregis_cal check (calidad>=1 and calidad<=10),
-    add constraint CKregis_esta check (estado in (1, 2)),
-    alter estado set default 1;
 
 /*----------------tabla producto----------------*/
 create table tb_producto (

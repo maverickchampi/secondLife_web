@@ -7,7 +7,7 @@
 	
 	<header th:replace="layout/layout::header"></header>
 
-	<main class="container-fluid">
+	<main class="container-fluid" style="min-height: calc(100vh - 100px);">
 		<!-- ========================= SECTION PAGETOP ========================= -->
 		<section class="section-pagetop bg padding-20">
 			<div class="container">
@@ -101,7 +101,9 @@
 		
 						<header class="border-bottom mb-4 pb-2">
 							<div class="form-inline">
-								<span class="mr-md-auto" th:text="${cantidad}"></span><a target="_blank" href="/ReporteProductos" class="btn btn-danger">Catálogo Productos</a>					
+								<span class="mr-md-auto" th:text="${cantidad}"></span>
+								<a target="_blank" href="/ReporteCategorias" class="btn btn-warning" style="margin-right:5px;">Catálogo Categorías</a>	
+								<a target="_blank" href="/ReporteProductos" class="btn btn-success">Catálogo Productos</a>					
 								<!-- <div class="btn-group">
 									<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view">
 										<i class="fa fa-bars"></i></a>
